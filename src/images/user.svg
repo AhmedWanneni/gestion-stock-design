@@ -1,0 +1,16 @@
+<svg id="Groupe_4" data-name="Groupe 4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57.379" height="57.379" viewBox="0 0 57.379 57.379">
+  <defs>
+    <clipPath id="clip-path">
+      <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="28.69" cy="28.69" rx="28.69" ry="28.69" fill="none"/>
+    </clipPath>
+  </defs>
+  <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="28.69" cy="28.69" rx="28.69" ry="28.69" transform="translate(0 0)" fill="#171715"/>
+  <g id="Groupe_3" data-name="Groupe 3" transform="translate(0 0)">
+    <g id="Groupe_2" data-name="Groupe 2" clip-path="url(#clip-path)">
+      <g id="Groupe_2-2" data-name="Groupe 2" transform="translate(7.427 9.245)">
+        <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="10.186" cy="10.186" rx="10.186" ry="10.186" transform="translate(10.899)" fill="#f6d70e"/>
+        <path id="Tracé_2" data-name="Tracé 2" d="M-199.342,47.515V47.5a19.492,19.492,0,0,1,19.308-16.909h3.55A19.491,19.491,0,0,1-157.178,47.5" transform="translate(199.342 -4.915)" fill="#f6d70e"/>
+      </g>
+    </g>
+  </g>
+</svg>
