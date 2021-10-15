@@ -16,6 +16,7 @@ import Articles from './pages/Articles';
 import Fournisseurs from './pages/Fournisseur';
 import Commandes from './pages/Commande';
 import Facture from "./pages/Facture"
+import Settings from "./pages/Settings"
 function App() {
 
   const location = useLocation();
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route exact path="/factures">
           <Facture />
+        </Route>
+        <Route exact path="/settings">
+          <Settings />
         </Route>
       </Switch>
     </>

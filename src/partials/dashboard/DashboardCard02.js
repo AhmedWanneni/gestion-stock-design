@@ -64,9 +64,9 @@ function DashboardCard02() {
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
           {/* Icon */}
-          <img src={Icon} width="32" height="32" alt="Icon 02" />
+          {/* <img src={Icon} width="32" height="32" alt="Icon 02" /> */}
           {/* Menu button */}
-          <EditMenu className="relative inline-flex">
+          {/* <EditMenu className="relative inline-flex">
             <li>
               <Link className="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" to="#0">Option 1</Link>
             </li>
@@ -76,14 +76,14 @@ function DashboardCard02() {
             <li>
               <Link className="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" to="#0">Remove</Link>
             </li>
-          </EditMenu>
+          </EditMenu> */}
         </header>
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">Acme Advanced</h2>
-        <div className="text-xs font-semibold text-gray-400 uppercase mb-1">Sales</div>
+        <h2 className="text-lg font-semibold ">Acme Advanced</h2>
+        {/* <div className="text-xs font-semibold text-gray-400 uppercase mb-1">Sales</div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-gray-800 mr-2">$17,489</div>
           <div className="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-14%</div>
-        </div>
+        </div> */}
       </div>
       {/* Chart built with Chart.js 3 */}
       <div className="flex-grow">

@@ -48,5 +48,25 @@ export const useStyles = makeStyles((theme) => ({
     color:'#000000'
   }
     
+  },
+  // ajouter Article
+  btnAA:{
+    backgroundColor:"#f6d70e",
+    color:"black",
+    borderRadius:"15px",
+    marginLeft:"12px"
+    
+  },
+  // popup
+  dc:{
+    alignItems:"center",
+    alignSelf:"center",
+    maxWidth:'100vh',
+    marginTop:"10vh"
+
+  },
+  dialAction:{
+    marginRight:"30px"
   }
+  
 }));

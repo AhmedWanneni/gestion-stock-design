@@ -6,6 +6,8 @@ import Header from "../partials/Header";
 
 const Commandes = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const columns = ["Identifiant unique","Date max","Gérant","Accepte"];
+
   return (
     <>
       <div className="flex h-screen overflow-hidden">
@@ -25,6 +27,8 @@ const Commandes = () => {
             Modifier={Modifier_Commandes}
             Supprimer={Supprimer_Commandes}
             title={"Liste des Commandes"}
+            subTitle={"commandes"}
+            columns={columns}
           />
         </div>
       </div>

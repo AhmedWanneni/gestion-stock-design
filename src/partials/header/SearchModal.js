@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../utils/Transition.js';
 import loop_img from "../../images/loupe.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 function SearchModal() {
 
   const [searchOpen, setSearchOpen] = useState(false);
@@ -40,7 +42,8 @@ function SearchModal() {
         aria-controls="search-modal"
       >
         <span className="sr-only">Search</span>
-        <img src={loop_img}/>
+        <FontAwesomeIcon  icon={faSearch}  style={{width:"32px",height:"32px",color:"black",marginRight:"8px"}} />
+        {/* <img src={loop_img}/> */}
       </button>
       {/* Modal backdrop */}
       <Transition

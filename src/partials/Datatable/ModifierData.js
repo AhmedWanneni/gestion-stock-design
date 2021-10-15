@@ -1,4 +1,4 @@
-import {Grid,InputAdornment, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@material-ui/core";
+import {Grid,InputAdornment, Button, Dialog, DialogActions, DialogContent,Typography, DialogTitle, TextField } from "@material-ui/core";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PublicIcon from "@material-ui/icons/Public";
 import RoomIcon from "@material-ui/icons/Room";
@@ -7,7 +7,8 @@ import "date-fns";
 import React, { useEffect, useState } from "react";
 import { countries, Modifier_Articles } from "./Controller";
 import { useStyles } from "./style";
-
+import { faTimes} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ModifierData = (props) => {
 	const classes = useStyles();
 	const {id,Modifier} = props;
@@ -50,63 +51,72 @@ const ModifierData = (props) => {
 	// ==================================================================
 	return (
 		
-			<Dialog open={props.openModifier} onClose={props.handleClose} aria-labelledby="form-dialog-title">
-				<DialogTitle id="form-dialog-title">Modifier Article</DialogTitle>
+			<Dialog 
+      fullScreen
+      open={props.openModifier} onClose={props.handleClose} aria-labelledby="form-dialog-title">
+			       <header className="sticky top-0 border-b border-gray-200 z-30 header">
+      <div className="px-4 sm:px-6 lg:px-8">
+     
+        <div className="flex items-center justify-between h-16 -mb-px">
+        <div className="flex justify-content-center items-center"></div>
+          {/* Header: Left side */}
+          <div className="flex">
+          <Typography component="h1" variant="h4" align="center" style={{color: "#000000"}}>
+                    Modifier Article
+                </Typography>
+          </div>
+
+          {/* Header: Right side */}
+          <div className="flex" style={{alignItems:"center",justifyContent:"center"}}>
+        
+                <FontAwesomeIcon  
+          onClick={() => {
+            props.handleClose(false);
+          }}
+          icon={faTimes}  style={{width:"32px",height:"32px",color:"black"}} />
+
+          </div>
+
+        </div>
+      </div>
+    </header>
 				<DialogContent>
-				<form className="form" onSubmit={handleModifier}>
-        <Grid container spacing={2} className={classes.root}>
-          <Grid container xs={12} sm={12} spacing={1}>
-            
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoCapitalize
-                placeholder="Libellé"
-                variant="outlined"
-                margin="dense"
-                label="libell"
-                name="libell"
-                type="text"
-                fullWidth
-                value={libell}
-                onChange={(e) => setLibell(String(e.target.value))}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SortByAlphaIcon className="gris" />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-          </Grid>
-          
-          <Grid xs={12} sm={12}>
+				<form className="form" onSubmit={handleModifier} style={{marginTop:"50px"}} >
+					<Grid  alignItems="center"
+
+  justifyContent="center" 
+  maxWidth="80vh"
+  container spacing={2}
+  >
+          <Grid item  xs={12} sm={12}>
+						
             <TextField
               autoCapitalize
-              placeholder="Famille"
               variant="outlined"
-              margin="dense"
-              label="famille"
-              name="famille"
+              label="libell"
+              name="libell"
               type="text"
               fullWidth
-              onChange={(e) => setFamille(e.target.value)}
-              value={famille}
+              
+              value={libell}
+              onChange={(e) => setLibell(String(e.target.value))}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
+            </Grid>
+						<Grid container item xs={12} sm={12} spacing={1}>
+							<Grid item xs={6} sm={6}>
+								
+              <TextField
               autoCapitalize
-              placeholder="Sous Famille"
+             
               variant="outlined"
-              margin="dense"
+             
               label="sous famille"
               name="famille"
               type="text"
@@ -117,20 +127,46 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          
-
-          <Grid xs={12} sm={12}>
-            <TextField
+							</Grid>
+							<Grid item xs={6} sm={6}>
+								
+              <TextField
               autoCapitalize
-              placeholder="nomenclature"
+             
               variant="outlined"
-              margin="dense"
+             
+              label="famille"
+              name="famille"
+              type="text"
+              fullWidth
+              onChange={(e) => setFamille(e.target.value)}
+              value={famille}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    
+                  </InputAdornment>
+                ),
+              }}
+              // InputLabelProps={{style: {fontSize: 30, color:"black"}}} 
+
+            />
+            
+							</Grid>
+							</Grid>
+						
+							<Grid item  xs={12} sm={12}>
+								
+							<TextField
+              autoCapitalize
+            
+              variant="outlined"
+              
               label="nomenclature"
               name="nomenclature"
               type="text"
@@ -141,18 +177,19 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
+							</Grid>
+              <Grid container item xs={12} sm={12} spacing={1}/>
+							<Grid item  xs={6} sm={6}>
+								
+							<TextField
               autoCapitalize
-              placeholder="Unité mesure"
               variant="outlined"
-              margin="dense"
+              
               label="Unité mésure"
               name="uniteMesure"
               type="text"
@@ -162,18 +199,19 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
+							</Grid>
+	
+							<Grid item  xs={6} sm={6}>
+								
+							<TextField
               autoCapitalize
-              placeholder="Quantité Stock"
               variant="outlined"
-              margin="dense"
+              
               label="Quantité Stock"
               name="famille"
               type="text"
@@ -183,39 +221,19 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
+							</Grid>
+							<Grid item  xs={6} sm={6}>
+								
+              <TextField
               autoCapitalize
-              placeholder="Fournisseur"
+              
               variant="outlined"
-              margin="dense"
-              label="Fournisseur"
-              name="fournisseur"
-              type="text"
-              fullWidth
-              onChange={(e) => setFournisseur(e.target.value)}
-              value={fournisseur}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <RoomIcon className="gris" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
-              autoCapitalize
-              placeholder="Prix"
-              variant="outlined"
-              margin="dense"
+             
               label="Prix"
               name="famille"
               type="text"
@@ -225,19 +243,62 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <RoomIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
             />
-          </Grid>
-          
-          <Grid xs={12} sm={12}>
-            <TextField
+							</Grid>
+							<Grid item  xs={6} sm={6}>
+								
+							<TextField
+              autoCapitalize
+              
+              variant="outlined"
+              
+              label="Prix"
+              name="famille"
+              fullWidth
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    
+                  </InputAdornment>
+                ),
+              }}
+            />
+							</Grid>
+							<Grid item  xs={6} sm={6}>
+								
+							<TextField
+              autoCapitalize
+              
+              variant="outlined"
+              
+              label="Fournisseur"
+              name="fournisseur"
+              type="text"
+              fullWidth
+              onChange={(e) => setFournisseur(e.target.value)}
+              value={fournisseur}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    
+                  </InputAdornment>
+                ),
+              }}
+            />
+							</Grid>
+						
+					
+							<Grid item  xs={6} sm={6}>
+								
+              <TextField 
               variant="outlined"
               autoCapitalize
-              placeholder="Stock minimum"
-              margin="dense"
               label="Stock minimum"
               name="stcMin"
               type="text"
@@ -247,40 +308,22 @@ const ModifierData = (props) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PublicIcon className="gris" />
+                    
                   </InputAdornment>
                 ),
               }}
+              // InputLabelProps={{style: {fontSize: 30, color:"black"}}} 
             />
-          </Grid>
-          <Grid xs={12} sm={12}>
-            <TextField
-              autoCapitalize
-              placeholder="Prix"
-              variant="outlined"
-              margin="dense"
-              label="Prix"
-              name="famille"
-              type="date"
-              fullWidth
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <RoomIcon className="gris" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          
-           
-        </Grid>
-      </form>
+							</Grid>
+						
+						
+						</Grid>
+				
+				</form>
       </DialogContent>
       <DialogActions>
         <Button
+        className={classes.btnAA}
           onClick={() => {
             props.handleClose(false);
           }}
@@ -289,7 +332,8 @@ const ModifierData = (props) => {
         >
           Annuler
         </Button>
-        <Button onClick={handleModifier} color="primary" variant="contained">
+        <Button 
+        className={classes.btnAA} onClick={handleModifier} color="primary" variant="contained">
           <PersonAddIcon />
           Modifier Article
         </Button>

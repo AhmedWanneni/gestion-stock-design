@@ -6,6 +6,8 @@ import fournisseur_img from "../images/fournisseur.svg";
 import commande_img from "../images/commande.svg";
 import facture_img from "../images/facture.svg";
 import dash_img from "../images/dashboard.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCogs } from '@fortawesome/free-solid-svg-icons'
 function Sidebar({
   sidebarOpen,
   setSidebarOpen
@@ -153,14 +155,15 @@ function Sidebar({
             </li>
             {/* Settings */}
             <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'settings' && 'bg-gray-900'}`}>
-              <NavLink exact to="/" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'settings' && 'hover:text-gray-200'}`}>
+              <NavLink exact to="/settings" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'settings' && 'hover:text-gray-200'}`}>
                 <div className="flex flex-grow">
-                  <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
+                <FontAwesomeIcon  icon={faCogs}  style={{width:"32px",height:"32px",color:"white",marginRight:"8px"}} />
+                  {/* <svg className="flex-shrink-0 h-6 w-6 mr-3" viewBox="0 0 24 24">
                     <path className={`fill-current text-gray-600 ${page === 'settings' && 'text-indigo-500'}`} d="M19.714 14.7l-7.007 7.007-1.414-1.414 7.007-7.007c-.195-.4-.298-.84-.3-1.286a3 3 0 113 3 2.969 2.969 0 01-1.286-.3z" />
                     <path className={`fill-current text-gray-400 ${page === 'settings' && 'text-indigo-300'}`} d="M10.714 18.3c.4-.195.84-.298 1.286-.3a3 3 0 11-3 3c.002-.446.105-.885.3-1.286l-6.007-6.007 1.414-1.414 6.007 6.007z" />
                     <path className={`fill-current text-gray-600 ${page === 'settings' && 'text-indigo-500'}`} d="M5.7 10.714c.195.4.298.84.3 1.286a3 3 0 11-3-3c.446.002.885.105 1.286.3l7.007-7.007 1.414 1.414L5.7 10.714z" />
                     <path className={`fill-current text-gray-400 ${page === 'settings' && 'text-indigo-300'}`} d="M19.707 9.292a3.012 3.012 0 00-1.415 1.415L13.286 5.7c-.4.195-.84.298-1.286.3a3 3 0 113-3 2.969 2.969 0 01-.3 1.286l5.007 5.006z" />
-                  </svg>
+                  </svg> */}
                   <span className="text-sm font-medium">Settings</span>
                 </div>
               </NavLink>

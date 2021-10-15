@@ -6,6 +6,8 @@ import Header from "../partials/Header";
 
 const Fournisseurs = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const columns = ["Identifiant unique","Nom","Prénom","Téléphone","Adresse"];
+
   return (
     <>
       <div className="flex h-screen overflow-hidden">
@@ -25,6 +27,10 @@ const Fournisseurs = () => {
             Modifier={Modifier_Fournisseurs}
             Supprimer={Supprimer_Fournisseurs}
             title={"Liste des Fournisseurs"}
+            subTitle={'fournisseur'}
+            x="3"
+            eg="3"
+            c={columns}
           />
         </div>
       </div>
