@@ -168,6 +168,22 @@ function Sidebar({
                 </div>
               </NavLink>
             </li>
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'campaigns' && 'bg-gray-900'}`}>
+              <NavLink exact to="/bonCommande" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'campaigns' && 'hover:text-gray-200'}`}>
+                <div className="flex flex-grow">
+                  <img className="sidebar-icon" src={commande_img}/>
+                  <span className="text-sm font-medium">Bon de commande</span>
+                </div>
+              </NavLink>
+            </li>
+            <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${page === 'campaigns' && 'bg-gray-900'}`}>
+              <NavLink exact to="/bonLivraison" className={`block text-gray-200 hover:text-white transition duration-150 ${page === 'campaigns' && 'hover:text-gray-200'}`}>
+                <div className="flex flex-grow">
+                  <img className="sidebar-icon" src={commande_img}/>
+                  <span className="text-sm font-medium">Bon de livraison</span>
+                </div>
+              </NavLink>
+            </li>
           </ul>
         </div>
 

@@ -69,7 +69,7 @@ const AjouterData = (props) => {
               name="libell"
               type="text"
               fullWidth
-              
+              required
               value={libell}
               onChange={(e) => setLibell(String(e.target.value))}
               InputProps={{
@@ -88,7 +88,7 @@ const AjouterData = (props) => {
               autoCapitalize
              
               variant="outlined"
-             
+              required
               label="sous famille"
               name="famille"
               type="text"
@@ -111,7 +111,7 @@ const AjouterData = (props) => {
               autoCapitalize
              
               variant="outlined"
-             
+              required
               label="famille"
               name="famille"
               type="text"
@@ -136,7 +136,7 @@ const AjouterData = (props) => {
 								
 							<TextField
               autoCapitalize
-            
+              required
               variant="outlined"
               
               label="nomenclature"
@@ -161,7 +161,7 @@ const AjouterData = (props) => {
 							<TextField
               autoCapitalize
               variant="outlined"
-              
+              required
               label="Unité mésure"
               name="uniteMesure"
               type="text"
@@ -183,7 +183,7 @@ const AjouterData = (props) => {
 							<TextField
               autoCapitalize
               variant="outlined"
-              
+              required
               label="Quantité Stock"
               name="famille"
               type="text"
@@ -205,7 +205,7 @@ const AjouterData = (props) => {
               autoCapitalize
               
               variant="outlined"
-             
+              required
               label="Prix"
               name="famille"
               type="text"
@@ -227,9 +227,9 @@ const AjouterData = (props) => {
               autoCapitalize
               
               variant="outlined"
-              
-              label="Prix"
-              name="famille"
+              required
+              label="Date"
+              name="date"
               fullWidth
               onChange={(e) => setDate(e.target.value)}
               value={date}
@@ -248,7 +248,7 @@ const AjouterData = (props) => {
               autoCapitalize
               
               variant="outlined"
-              
+              required
               label="Fournisseur"
               name="fournisseur"
               type="text"
@@ -268,7 +268,8 @@ const AjouterData = (props) => {
 					
 							<Grid item  xs={6} sm={6}>
 								
-              <TextField 
+              <TextField
+              required 
               variant="outlined"
               autoCapitalize
               label="Stock minimum"

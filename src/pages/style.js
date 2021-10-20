@@ -6,7 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f6d70e",
     color: "black",
     borderRadius: "15px",
-
   },
   form: {
     // maxWidth: "50vh",
@@ -31,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "#d5d5d5",
     color: "black",
     borderRadius: "15px", 
-    marginLeft:"35px"
+    marginLeft:"26px"
   },
   container:{
     alignContent:"center",

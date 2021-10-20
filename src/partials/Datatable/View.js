@@ -1,4 +1,4 @@
-import { Button, Paper, TextField, Typography } from "@material-ui/core";
+import { Button, Checkbox, Paper, TextField, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -26,14 +26,16 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
   const [openAjouter, setOpenAjouter] = useState(false);
   const [openModifier, setOpenModifier] = useState(false);
   const [errorConnxion, setErrorConnexion] = useState(false);
-
+ const[loading,setLoading]=useState(false)
   const [supp, setSupp] = useState(false);
-  const [supr, setSupr] = useState(false);
+  const [add, setAdd] = useState(false);
   const [NomSearch, setNomSearch] = useState("");
   const [searchId, setSearchId] = useState("");
+  const [detail,setDetail]=useState([])
   localStorage.setItem("sds", "sdffd");
   const handleClickModifierOpen = () => setOpenModifier(true);
   const handleClose = () => {
+    setLoading((prev) => !prev)
     setOpenAjouter(false);
     setOpenModifier(false);
   };
@@ -42,6 +44,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
   const TABLE_STORAGE_NAME = "patientTableSettings";
 
   const DeleteRow = () => {
+
     Supprimer(window.localStorage.getItem("article_id"))
       .then(
         setSupp((prev) => !prev)
@@ -94,10 +97,12 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
         k.map((row) => row.push(actionsBtn));
 
         setPatient(k);
+        // console.log("thiis",k)
+        //setAdd((prev) => !prev)
         
       })
       .catch((e) => console.error(e));
-  }, [supp, openPopupPatient, openModifier,supr]);
+  }, [supp, openPopupPatient, openModifier,add]);
   useEffect(() => {
     Afficher()
       .then((res) => {
@@ -153,6 +158,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
     setOptions({
       filter: true,
       selectableRows: "none",
+      //  selectableRows:Checkbox,
       
       filtertype: TextField,
       searchText: String(searchId),
@@ -166,6 +172,9 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
       onRowClick: (data) => {
         window.localStorage.setItem("article_id", data[0]);
         setId(window.localStorage.getItem("article_id"));
+        setDetail(data);
+        console.log("dattt",data);
+        
       },
       onRowsDelete: (rowsDeleted) =>
         rowsDeleted.data.map((d) =>
@@ -261,6 +270,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
           handleClose={handleClose}
           openModifier={openModifier}
           Modifier={Modifier}
+          detail={detail}
         />
      :eg ==="3"?<ModifierFournisseur
           id={id}
@@ -268,11 +278,13 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
           handleClose={handleClose}
           openModifier={openModifier}
           Modifier={Modifier}
+          detail={detail}
           />:eg ==="2"?<ModifierMagasin
           id={id}
           handleClose={handleClose}
           openModifier={openModifier}
           Modifier={Modifier}
+          detail={detail}
           />:null }
         <MuiThemeProvider theme={theme}>
           <MUIDataTable
@@ -282,6 +294,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
             columns={columns}
             options={options}
             subTitle={subTitle}
+            
           />
         </MuiThemeProvider>
       </div>

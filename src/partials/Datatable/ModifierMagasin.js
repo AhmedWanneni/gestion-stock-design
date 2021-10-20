@@ -1,4 +1,4 @@
-import React ,{useState}from 'react';
+import React ,{useState,useEffect}from 'react';
 import { Grid, InputAdornment,InputLabel,Button, Dialog,Typography, DialogActions, DialogContent, DialogTitle, TextField, FormControl, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@material-ui/core";
 import { useStyles } from "./style";
 const ModifierMagasin = (props) => {
@@ -6,13 +6,16 @@ const ModifierMagasin = (props) => {
 
     const [gerant, setGerant] = useState("");
     const [adresse, setAdresse] = useState("");
-    const {id,Modifier} = props;
-   
+    const {id,Modifier,detail} = props;
+   useEffect(() => {
+     setAdresse(detail[1])
+     setGerant(detail[2])
+   }, [])
  const handleModifier = async ()=>{
     
   let Magasin={
     gerant:gerant,
-    adress:adresse,
+    adresse:adresse,
 
 }
 Modifier(Magasin,id)
@@ -51,9 +54,11 @@ PaperProps={{
                   label="Géran magasin"
                   name="nom"
                   type="text"
+                  required
                   fullWidth
                   onChange={(e) => setGerant(e.target.value)}
                   value={gerant}
+                  defaultValue={detail[2]}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start"></InputAdornment>
@@ -69,9 +74,11 @@ PaperProps={{
                   label="Adresse magasin "
                   name="adresse"
                   type="text"
+                  required
                   fullWidth
                   onChange={(e) => setAdresse(e.target.value)}
                   value={adresse}
+                  defaultValue={detail[1]}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start"></InputAdornment>

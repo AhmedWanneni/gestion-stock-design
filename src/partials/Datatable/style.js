@@ -67,6 +67,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   dialAction:{
     marginRight:"30px"
-  }
-  
+  },
+  // noBorder: {
+  //   border: "none",
+  // },
+  // focused: {
+  //   transform: "translate(12px, 7px) scale(0.75)",
+  //   border: "none",
+  // }
 }));

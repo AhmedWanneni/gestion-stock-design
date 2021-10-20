@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 
 
-import { Ajouter_Fournisseurs, Afficher_Fournisseurs,Modifier_Fournisseurs,Supprimer_Fournisseurs } from "./Controller";
+import { Afficher_Fournisseurs} from "../../pages/Controller";
 
 import { Button, Paper, TextField, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
@@ -11,8 +11,16 @@ import MUIDataTable from "mui-datatables";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 const Fournisseurs = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false);
-  const handleSearch =()=>{}
+  const [fournisseur,setFournisseur]=useState()
+  useEffect(() => {
+    Afficher_Fournisseurs()
+    .then((res) => {
+      console.log("the data",res)
+      setFournisseur(res)
+    }).catch((err) => {
+      console.log(err)
+    });
+  }, [])
     const columns = [
       {
        name: "nom",
@@ -46,78 +54,35 @@ const Fournisseurs = () => {
         sort: false,
        }
       },
-      // {
-      //     name: "edit",
-          
-      //     options: {
-      //      filter: true,
-              
-      //      onRowClick :(index,data) => {
-      //    console.log("here",data.rowIndex);
-      //      }
-      //     ,
-      //     customBodyRender: (value,tableMeta) => {
-      //         return (
-      //           <ModeEditIcon 
-      //           value={value}
-      //           index={tableMeta.columnIndex}
-
-      //           onClick={
-      //             ()=>{setOpenEditPopup(true)
-      //             setIndex(fournisseurId[tableMeta.rowIndex ])
-      //             }
-                  
-
-      //               }
-      //           >
-                      
-      //           </ModeEditIcon>
-      //         );
-      //       },
-          
-      //     }
-          
-      //    },
-      // {
-      //     name: "delete",
-      //     label: "delete",
-      //     options: {
-      //      filter: true,
-      //      sort: false,
-           
-      //      customBodyRender: (value, tableMeta) => {
-      //         return (
-      //           <DeleteIcon  
-      //           value={value}
-      //           index={tableMeta.columnIndex}
-      //           onClick={
-      //               () => 
-      //               deleteFournisseur(fournisseurId[tableMeta.rowIndex ])
-      //               //()=>console.log( "hhh",magasinId[tableMeta.rowIndex ])
-      //               }  > 
-                
-      //           </DeleteIcon>
-      //         );
-      //       }
-          
-      //     }
-      // },
+      
      ];
      const options = {
       customToolbar :() => {
         return(
            <>
-             <Button
-            className="btn-ajouter"
-            variant="contained"
-            color="accent"
-             onClick={()=>setOpenPopup(true)}>
-               <AddIcon />
-               Ajouter fournisseur</Button>
+            
             
            </>
          );
-        }}
+        },
+        customToolbarSelect: (selectedRows) => {
+          const newSelectedRow = selectedRows.data.length > 1 ? selectedRows.data[1] : selectedRows.data[0];
+          const newSelectedIndex = parseInt(newSelectedRow.index);
+          const temp = {
+            data: newSelectedRow,
+            lookup: {}
+          };
+          temp.lookup[`${newSelectedIndex}`] = true;
+          if (selectedRows.data.length > 1) {
+            selectedRows.data = [];
+            selectedRows.lookup = temp.lookup;
+            selectedRows.data.push(temp.data);
+          }
+        },
+        onRowSelectionChange :(lookup,data, currentRowsSelected,) => {
+           localStorage.setItem("fournisseur",JSON.stringify([fournisseur[(data[0].index)]]))       
+                    },
+      }
         const theme = createMuiTheme({
           overrides: {
             MuiTableHead: {
@@ -152,14 +117,6 @@ const Fournisseurs = () => {
   return (
     <>
      
-          
-          {/* <Datatable
-            Ajouter={Ajouter_Fournisseurs}
-            Afficher={Afficher_Fournisseurs}
-            Modifier={Modifier_Fournisseurs}
-            Supprimer={Supprimer_Fournisseurs}
-            title={"Liste des Fournisseurs"}
-          /> */}
            <div className="content">
       <Paper className="datatable-big-title">
         <Typography variant="h4" component="h2">
@@ -172,18 +129,14 @@ const Fournisseurs = () => {
           <MUIDataTable
             className="flat"
             title={"Liste des Fournisseur"}
-         
+            data={fournisseur}
             columns={columns}
             options={options}
           />
         </MuiThemeProvider>
       </div>
 
-      {/* <AjouterMagasin 
-    title = {"Add magasin"}
-      openPopup={openPopup}
-      setOpenPopup={setOpenPopup}
-      handleClose={setOpenPopup}/> */}
+     
     </div>
        
     </>
