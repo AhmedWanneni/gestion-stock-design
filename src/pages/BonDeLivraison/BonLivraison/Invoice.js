@@ -6,10 +6,10 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import uuidv4 from "uuid/v4";
 // import logo from "../../img/logo.png";
 
+const refe= React.createRef();
 class Invoice extends Component {
   locale = "en-US";
   currency = "USD";
-
   constructor(props) {
     super(props);
     // this.myRef = React.createRef(),
@@ -108,7 +108,7 @@ class Invoice extends Component {
     return (
      
           
-      <div ref={el => (this.componentRef = el)} className={styles.invoice}>
+      <div ref={el => (this.componentRef = el)} refe={refe}className={styles.invoice}>
         <div className={styles.brand}>
           <img  alt="Logo" className="logo" />
           {this.state.currentDate}
@@ -208,11 +208,11 @@ class Invoice extends Component {
             )}
           </PrintContextConsumer>
         </ReactToPrint>
-          <Pdf content={() => this.componentRef} filename="code-example.pdf">
+          <Pdf targetRef={refe}  filename="invoice.pdf">
         {({ toPdf }) => <button className={styles.payNow} onClick={toPdf} >
             Enregistrer
           </button>}
-      </Pdf>
+            </Pdf>
           
         </div>
       </div>

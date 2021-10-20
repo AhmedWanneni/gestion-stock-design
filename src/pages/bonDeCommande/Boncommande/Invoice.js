@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./Invoice.module.scss";
 
 import LineItems from "./LineItems";
+import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
 import uuidv4 from "uuid/v4";
 // import logo from "../../img/logo.png";
@@ -105,7 +106,7 @@ class Invoice extends Component {
     return (
      
           
-      <div className={styles.invoice}>
+      <div ref={el => (this.componentRef = el)} className={styles.invoice}>
         <div className={styles.brand}>
           <img  alt="Logo" className="logo" />
           {this.state.currentDate}
@@ -196,9 +197,16 @@ class Invoice extends Component {
         </div>
 
         <div className={styles.pay}>
-          <button className={styles.payNow} onClick={this.handlePayButtonClick}>
-            Imprimer
-          </button>
+        <ReactToPrint content={() => this.componentRef}>
+          <PrintContextConsumer>
+            {({ handlePrint }) => (
+              <button className={styles.payNow} onClick={handlePrint}>
+              Imprimer
+            </button>
+            )}
+          </PrintContextConsumer>
+        </ReactToPrint>
+        
           <button className={styles.payNow} onClick={this.handlePayButtonClick}>
             Enregistrer
           </button>
