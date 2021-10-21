@@ -20,6 +20,8 @@ import Settings from "./pages/Settings"
 import Invoice from "./pages/Invoice/Invoice"
 import BonCommande from './pages/bonDeCommande/view';
 import BonLivraison from './pages/BonDeLivraison/view';
+import Login from "./pages/login/view"
+import PrivateRoute from './pages/login/privateRoutes';
 function App() {
 
   const location = useLocation();
@@ -34,9 +36,12 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <Dashboard />
+      <Route exact path="/login">
+          <Login/>
         </Route>
+        <PrivateRoute exact path="/">
+          <Dashboard />
+        </PrivateRoute>
         <Route exact path="/magasins">
           <Magasins />
         </Route>
