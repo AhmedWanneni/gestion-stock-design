@@ -14,7 +14,7 @@ function DashboardCard04() {
     datasets: [
       // Light blue bars
       {
-        label: 'Direct',
+        label: 'Commande',
         data: [
           800, 1600, 900, 1300, 1950, 1700,
         ],
@@ -25,7 +25,7 @@ function DashboardCard04() {
       },
       // Blue bars
       {
-        label: 'Indirect',
+        label: 'Magasins',
         data: [
           4900, 2600, 5350, 4800, 5200, 4800,
         ],
