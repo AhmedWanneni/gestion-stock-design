@@ -25,7 +25,7 @@ const Factures = () => {
             Modifier={Modifier_Factures}
             Supprimer={Supprimer_Factures}
             title={"Liste des Article"}
-          /> 
+          />
         </div>
     </>;
       case 0:
