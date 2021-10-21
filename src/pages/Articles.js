@@ -12,19 +12,9 @@ import Header from "../partials/Header";
 const Articles = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const columns = [
-    "identifiant",
-    "Libellés",
-    "Famille",
-    "Sous Famille",
-    "Numéro",
-    "Unité",
-    "Stock",
-    "Quantité",
-    "Fournisseur",
-    "Prix",
-    "Date",
-  ];
+ 
+ 
+  const columns = ["identifiant","Libellés","Famille","Sous Famille","Nomenclature","Unité","Stock","Quantité","Fournisseur","Prix","Date"];
   return (
     <>
       <div className="flex h-screen overflow-hidden">

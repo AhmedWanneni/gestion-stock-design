@@ -17,6 +17,9 @@ import Fournisseurs from './pages/Fournisseur';
 import Commandes from './pages/Commande';
 import Facture from "./pages/Facture"
 import Settings from "./pages/Settings"
+import Invoice from "./pages/Invoice/Invoice"
+import BonCommande from './pages/bonDeCommande/view';
+import BonLivraison from './pages/BonDeLivraison/view';
 function App() {
 
   const location = useLocation();
@@ -51,6 +54,12 @@ function App() {
         </Route>
         <Route exact path="/settings">
           <Settings />
+        </Route>
+        <Route exact path="/bonCommande">
+          <BonCommande/>
+        </Route>
+        <Route exact path="/bonLivraison">
+          <BonLivraison/>
         </Route>
       </Switch>
     </>

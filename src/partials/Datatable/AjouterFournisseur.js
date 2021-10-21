@@ -29,6 +29,7 @@ const AjouterFournisseur = (props) => {
     return ( <>
     <Dialog
      fullWidth
+     
      maxWidth="lg"
      PaperProps={{
        style: {
@@ -57,6 +58,7 @@ const AjouterFournisseur = (props) => {
                        margin="dense"
                        label="nom"
                        name="nom"
+                       required
                        type="text"
                        fullWidth
                        InputProps={{
@@ -82,6 +84,7 @@ const AjouterFournisseur = (props) => {
                        name="prenom"
                        type="text"
                        fullWidth
+                       required
                        InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -104,6 +107,7 @@ const AjouterFournisseur = (props) => {
                        name="tel"
                        type="text"
                        fullWidth
+                       required
                        InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -120,6 +124,7 @@ const AjouterFournisseur = (props) => {
                    <TextField
                        autoCapitalize
                        //placeholder="Adresse"
+                       required
                        variant="outlined"
                        margin="dense"
                        label="Adresse"

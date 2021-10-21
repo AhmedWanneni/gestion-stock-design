@@ -9,7 +9,18 @@ import {
 const Data = () => {
     const [data,setData]=useState([])
     let articleData = JSON.parse((localStorage.getItem('data')));
-    let Quantite = JSON.parse(localStorage.getItem("quantite")) 
+    let Quantite = JSON.parse(localStorage.getItem("quantite"));
+
+    articleData.map( (article,id) => {
+     
+      const array= article["quantite"] = Quantite[id];
+      setData(array)
+      console.log("this",array,id);
+
+    })
+    
+
+    console.log(articleData);
     let fournisseur = JSON.parse(localStorage.getItem("fournisseur")) 
     let price = JSON.parse(localStorage.getItem("price"))
     const componentRef = useRef();
@@ -65,36 +76,49 @@ const Data = () => {
                 </div>
 
                 <div className="mt-4">
-                    <Table striped bordered hover size="sm"  >
-  <tr>
-  <th >code</th>
+                    
+ 
+ 
       {articleData.map((article)=>(
+        <Table striped bordered hover size="sm"  >
+        <th>
+          <td>Code</td>
+          <td>LIbell</td>
+          <td>famille</td>
+          <td>sous famille</td>
+          <td>prix</td>
+          
+        </th>
+        <tr>
+          <td>{article.libell}</td>
+          <td>{article.famille}</td>
+          <td>{article.SousFamille}</td>
+          <td>{article.prix}</td>
+          
+          
+        </tr>
+        </Table>
+
+        
+    
+    ))}
+
+<table >
+  <tr>
+    <th>code</th>
+    <th>prix unitaire</th>
+    <th>Quantiter</th>
+    <th>price</th>
+  </tr>
+  <tr>
+  {articleData.map((article)=>(
     
     <td >{article.code}</td>
     ))}
+   
   </tr>
-  <tr >
-    <th >unit price</th>
-    {articleData.map((article)=>(
-    
-    <td >{article.prix}</td>
-    ))}
-  </tr>
-  <tr >
-    <th>quantite</th>
-    {Quantite.map((qts)=>(
-    
-    <td >{qts}</td>
-    ))}
-  </tr>
-  <tr >
-    <th>total price</th>
-    {price.map((pr)=>(
-    
-    <td >{pr}</td>
-    ))}
-  </tr>
-</Table>
+  
+</table>
                     <div className="row border-b-2 brc-default-l2"></div>
 
                     <div className="row mt-3">

@@ -14,11 +14,10 @@ import AjouterMagasin from "../partials/Datatable/AjouterMagasin"
 const Magasins = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
-   const handleSearch =()=>{
-
-   }
+ 
    
-   const columns = ["Identifiant unique","Gérant","Adresse"];
+   
+   const columns = ["Identifiant unique","Adresse","Gérant"];
 
   return (
     <>

@@ -9,6 +9,7 @@ import {
   InputAdornment,
   TextField,
   Container,
+  Box,
 } from "@material-ui/core";
 import "date-fns";
 import React, { useState } from "react";
@@ -34,7 +35,7 @@ const AjouterData = (props) => {
       gerant:gerant,
       adresse:adresse
     };
-    Ajouter_Magasins(Magasin)
+    Ajouter(Magasin)
       .then(console.log("ajouter mg"))
       .catch((e) => console.log(e));
     props.handleClose();
@@ -49,6 +50,7 @@ const AjouterData = (props) => {
         PaperProps={{
           style: {
             boxShadow: "none",
+            overflow:"hidden"
           },
         }}
         open={openPopup}
@@ -76,16 +78,20 @@ const AjouterData = (props) => {
                 <TextField
                   placeholder="Gérant magasin"
                   autoCapitalize
+                  required
                   variant="outlined"
                   name="nom"
                   type="text"
                   fullWidth
-                  onChange={(e) => setGerant(e.target.value)}
+                  onChange={(e) =>setGerant(e.target.value)}
                   value={gerant}
                   InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start"></InputAdornment>
+                     startAdornment: (
+                      <InputAdornment  
+                      classes={{ focused: classes.focused }}
+                      shrink={false} position="start"></InputAdornment>
                     ),
+                  
                   }}
                   InputLabelProps={{ style: { border: "0" } }}
                 />
@@ -94,20 +100,28 @@ const AjouterData = (props) => {
               <label>Adresse magasin</label>
                 <TextField
                   autoCapitalize
+                  disableUnderline={false}
+                  required
                   variant="outlined"
                   placeholder="Adresse magasin"
                   name="adresse"
                   type="text"
                   fullWidth
-                  onChange={(e) => setAdresse(e.target.value)}
+                  onChange={(e) =>setAdresse(e.target.value)}
                   value={adresse}
+                  autoFocus
+      classes={{notchedOutline:classes.input}}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start"></InputAdornment>
-                    ),
+                      <InputAdornment  position="start"></InputAdornment>
+                      ),
+                      
+                   
+                    
                   }}
-                  InputLabelProps={{ style: { border: "1px solid black" } }}
+                 
                 />
+            
               </Grid>
             </Grid>
     

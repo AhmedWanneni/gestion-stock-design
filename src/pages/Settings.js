@@ -5,7 +5,12 @@ import Header from "../partials/Header";
 import { useStyles } from "./style";
 const Settings = () => {
     const classes = useStyles();
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const[sidebarOpen, setSidebarOpen] = useState(false);
+    const[nom,setNom]=useState("")
+    const[prenom,setPrenom]=useState("")
+    const[email,setEmail]=useState("")
+    const[image, setImage] = useState("");
+    const[motDePasse,setMotDePasse]=useState('')
     return ( <>
   <div className="flex h-screen overflow-hidden">
         {/* Sidebar */}

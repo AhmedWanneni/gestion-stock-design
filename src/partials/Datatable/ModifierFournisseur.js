@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { Grid, InputAdornment,InputLabel,Button, Dialog,Typography, DialogActions, DialogContent, DialogTitle, TextField, FormControl, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@material-ui/core";
 import { useStyles } from "./style";
 const ModifierFournisseur = (props) => {
@@ -8,8 +8,17 @@ const ModifierFournisseur = (props) => {
     const [tel ,setTel]=useState("")
     const [adresse ,setAdresse]=useState("")
     const [clickAjouter, setClickAjouter] = useState(false);
-    const {title,} = props;
-    const {id,Modifier} = props;
+    const {title} = props;
+    const {id,Modifier,detail} = props;
+
+
+    useEffect(() => {
+     console.log(detail)
+     setNom(detail[1])
+     setPrenom(detail[2])
+     setTel(detail[3])
+     setAdresse(detail[4])
+    }, [])
     const handleModifier = async ()=>{
      let Fournisseur={
             nom:nom,
@@ -50,6 +59,7 @@ const ModifierFournisseur = (props) => {
                        variant="outlined"
                        autoCapitalize
                       // placeholder="nom"
+                      required
                        margin="dense"
                        label="nom"
                        name="nom"
@@ -64,7 +74,7 @@ const ModifierFournisseur = (props) => {
                       }}
                        onChange={(e) => setNom(e.target.value)}
                        value={nom}
-                       
+                       defaultValue={detail[1]}
                    />
                </Grid>
                <Grid item  xs={12} sm={12}>
@@ -72,6 +82,7 @@ const ModifierFournisseur = (props) => {
                    <TextField
                        autoCapitalize
                       // placeholder="prenom"
+                      required
                        variant="outlined"
                        margin="dense"
                        label="prenom"
@@ -87,12 +98,14 @@ const ModifierFournisseur = (props) => {
                       }}
                         onChange={(e) => setPrenom(e.target.value)}
                        value={prenom}
+                       defaultValue={detail[2]}
                    />
                </Grid>
                <Grid item  xs={12} sm={12}>
                    
                    <TextField
                        autoCapitalize
+                       required
                       // placeholder="tel"
                        variant="outlined"
                        margin="dense"
@@ -109,12 +122,15 @@ const ModifierFournisseur = (props) => {
                       }}
                         onChange={(e) =>setTel(e.target.value)}
                        value={tel}
+                       defaultValue={detail[3]}
+                       
                    />
                </Grid>
                <Grid item  xs={12} sm={12}>
                    
                    <TextField
                        autoCapitalize
+                       required
                        //placeholder="Adresse"
                        variant="outlined"
                        margin="dense"
@@ -131,6 +147,7 @@ const ModifierFournisseur = (props) => {
                       }}
                         onChange={(e) =>setAdresse(e.target.value)}
                        value={adresse}
+                       defaultValue={detail[4]}
                    />
                </Grid>
                

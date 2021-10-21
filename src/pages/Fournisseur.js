@@ -11,14 +11,8 @@ import Header from "../partials/Header";
 
 const Fournisseurs = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const columns = [
-    "Identifiant unique",
-    "Nom",
-    "Prénom",
-    "Téléphone",
-    "Adresse",
-  ];
-
+  const columns = ["Identifiant unique","Nom","Prénom","Téléphone","Adresse"];
+   const options=[]
   return (
     <>
       <div className="flex h-screen overflow-hidden">

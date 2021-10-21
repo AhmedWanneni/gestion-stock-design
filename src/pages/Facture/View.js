@@ -7,7 +7,7 @@ import { Ajouter_Factures, Afficher_Factures,Modifier_Factures,Supprimer_Facture
 import Header from "../../partials/Header";
 import Fournisseur from "../../partials/Datatable/FournisseurTable"
 import Data from "./Facture"
-
+import Article from "../../partials/Datatable/ArticleTable"
 import { Button, Paper, TextField,Grid,Box,Stepper,Step,StepLabel,Typography} from "@material-ui/core";
 const steps = ['Liste des fournisseur', 'Liste des article', 'Votre Facture'];
 const Factures = () => {
@@ -19,13 +19,7 @@ const Factures = () => {
       case 1:
         return  <> 
         <div>
-        <Datatable
-            Ajouter={Ajouter_Factures}
-            Afficher={Afficher_Factures}
-            Modifier={Modifier_Factures}
-            Supprimer={Supprimer_Factures}
-            title={"Liste des Article"}
-          />
+        <Article/> 
         </div>
     </>;
       case 0:
