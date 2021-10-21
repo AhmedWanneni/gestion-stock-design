@@ -45,10 +45,10 @@ const AjouterData = (props) => {
     <>
       <Dialog
         fullWidth
-        maxWidth="lg"
+        maxWidth="sm"
+        padding="1rem"
         PaperProps={{
           style: {
-            borderRadius: "50px",
             boxShadow: "none",
             overflow:"hidden"
           },
@@ -70,25 +70,17 @@ const AjouterData = (props) => {
           ""
         )}
 
-        <form className="form" onSubmit={handleAjouter}
-         noValidate
-         autoComplete="off"
-        >
-          <Grid
-            alignItems="center"
-            justifyContent="center"
-            maxWidth="80vh"
-            container
-            spacing={2}
-          >
+        <form className="form" onSubmit={handleAjouter}>
+         
             <Grid container item xs={12} sm={12} spacing={1}>
-              <Grid item xs={6} sm={6}>
+              <Grid item xs={12} sm={12}>
+                <label>Gérant magasin</label>
                 <TextField
+                  placeholder="Gérant magasin"
                   autoCapitalize
                   required
                   variant="outlined"
-                  label="Géran magasin"
-                  name="gerant"
+                  name="nom"
                   type="text"
                   fullWidth
                   onChange={(e) =>setGerant(e.target.value)}
@@ -101,17 +93,17 @@ const AjouterData = (props) => {
                     ),
                   
                   }}
-                 
+                  InputLabelProps={{ style: { border: "0" } }}
                 />
               </Grid>
-           
-              <Grid item xs={6} sm={6}>
+              <Grid item xs={12} sm={12}>
+              <label>Adresse magasin</label>
                 <TextField
                   autoCapitalize
                   disableUnderline={false}
                   required
                   variant="outlined"
-                  label="Adresse magasin "
+                  placeholder="Adresse magasin"
                   name="adresse"
                   type="text"
                   fullWidth
@@ -132,7 +124,7 @@ const AjouterData = (props) => {
             
               </Grid>
             </Grid>
-          </Grid>
+    
         </form>
         {/* </DialogContent> */}
         <DialogActions className={classes.dialAction} >

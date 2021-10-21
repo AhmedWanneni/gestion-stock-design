@@ -1,18 +1,21 @@
 import {
   Button,
-  DialogActions, Grid,
-  InputAdornment, TextField,Container
+  DialogActions,
+  Grid,
+  InputAdornment,
+  TextField,
+  Container,
 } from "@material-ui/core";
 import "date-fns";
 import React, { useState } from "react";
 import { useStyles } from "./style";
 
-import {Ajouter_Articles} from "../../pages/Controller"
+import { Ajouter_Articles } from "../../pages/Controller";
 const AjouterData = (props) => {
   const classes = useStyles();
- 
-  const {Ajouter} = props;
- 
+
+  const { Ajouter } = props;
+
   // =================== [State] ====================
   const [libell, setLibell] = useState("");
   const [famille, setFamille] = useState("");
@@ -20,48 +23,44 @@ const AjouterData = (props) => {
   const [nomenclature, setNomenclature] = useState("");
   const [stcMin, setStcMin] = useState("");
   const [uniteMesure, setUniteMesure] = useState("");
-  const [quantite,setQuantite] = useState("");
-  const [fournisseur,setFournisseur] = useState("");
-  const [prix,setPrix] = useState("");
-  const [date,setDate] = useState("");
+  const [quantite, setQuantite] = useState("");
+  const [fournisseur, setFournisseur] = useState("");
+  const [prix, setPrix] = useState("");
+  const [date, setDate] = useState("");
   const [clickAjouter, setClickAjouter] = useState(false);
-  
-
 
   // ============== [Ajouter Article] ================
   const handleAjouter = () => {
     setClickAjouter(true);
     let article = {
-      libell :libell,
-      famille :famille,
-      sousFamille :sousFamille,
+      libell: libell,
+      famille: famille,
+      sousFamille: sousFamille,
       nomenclature: nomenclature,
       uniteMesure: uniteMesure,
-      sockMin : stcMin,
-      qtStock : quantite,
-      fournisseur : fournisseur,
-      prix : prix,
-      date : date
-    }
+      sockMin: stcMin,
+      qtStock: quantite,
+      fournisseur: fournisseur,
+      prix: prix,
+      date: date,
+    };
     Ajouter(article)
       .then(console.log("ajouter Article"))
       .catch((e) => console.log(e));
     props.handleClose();
-    
   };
 
   return (
     <>
-     
-     <form className="form" onSubmit={handleAjouter}  >
-					<Grid  alignItems="center"
-
-  justifyContent="center" 
-  maxWidth="80vh"
-  container spacing={2}
-  >
-          <Grid item  xs={12} sm={12}>
-						
+      <form className="form" onSubmit={handleAjouter}>
+        <Grid
+          alignItems="center"
+          justifyContent="center"
+          maxWidth="80vh"
+          container
+          spacing={2}
+        >
+          <Grid item xs={12} sm={12}>
             <TextField
               autoCapitalize
               variant="outlined"
@@ -69,99 +68,75 @@ const AjouterData = (props) => {
               name="libell"
               type="text"
               fullWidth
-              required
               value={libell}
               onChange={(e) => setLibell(String(e.target.value))}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
+          </Grid>
+          <Grid container item xs={12} sm={12} spacing={1}>
+            <Grid item xs={6} sm={6}>
+              <TextField
+                autoCapitalize
+                variant="outlined"
+                label="sous famille"
+                name="famille"
+                type="text"
+                fullWidth
+                onChange={(e) => setSousFamille(e.target.value)}
+                value={sousFamille}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start"></InputAdornment>
+                  ),
+                }}
+              />
             </Grid>
-						<Grid container item xs={12} sm={12} spacing={1}>
-							<Grid item xs={6} sm={6}>
-								
+            <Grid item xs={6} sm={6}>
               <TextField
-              autoCapitalize
-             
-              variant="outlined"
-              required
-              label="sous famille"
-              name="famille"
-              type="text"
-              fullWidth
-              onChange={(e) => setSousFamille(e.target.value)}
-              value={sousFamille}
-              
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
-                ),
-              }}
-            />
-							</Grid>
-							<Grid item xs={6} sm={6}>
-								
-              <TextField
-              autoCapitalize
-             
-              variant="outlined"
-              required
-              label="famille"
-              name="famille"
-              type="text"
-              fullWidth
-              onChange={(e) => setFamille(e.target.value)}
-              value={famille}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
-                ),
-              }}
-              // InputLabelProps={{style: {fontSize: 30, color:"black"}}} 
+                autoCapitalize
+                variant="outlined"
+                label="famille"
+                name="famille"
+                type="text"
+                fullWidth
+                onChange={(e) => setFamille(e.target.value)}
+                value={famille}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start"></InputAdornment>
+                  ),
+                }}
+                // InputLabelProps={{style: {fontSize: 30, color:"black"}}}
+              />
+            </Grid>
+          </Grid>
 
-            />
-            
-							</Grid>
-							</Grid>
-						
-							<Grid item  xs={12} sm={12}>
-								
-							<TextField
+          <Grid item xs={12} sm={12}>
+            <TextField
               autoCapitalize
-              required
               variant="outlined"
-              
               label="nomenclature"
               name="nomenclature"
               type="text"
               fullWidth
               onChange={(e) => setNomenclature(e.target.value)}
               value={nomenclature}
-              
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-              <Grid container item xs={12} sm={12} spacing={1}/>
-							<Grid item  xs={6} sm={6}>
-								
-							<TextField
+          </Grid>
+          <Grid container item xs={12} sm={12} spacing={1} />
+          <Grid item xs={6} sm={6}>
+            <TextField
               autoCapitalize
               variant="outlined"
-              required
               label="Unité mésure"
               name="uniteMesure"
               type="text"
@@ -170,20 +145,16 @@ const AjouterData = (props) => {
               value={uniteMesure}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-	
-							<Grid item  xs={6} sm={6}>
-								
-							<TextField
+          </Grid>
+
+          <Grid item xs={6} sm={6}>
+            <TextField
               autoCapitalize
               variant="outlined"
-              required
               label="Quantité Stock"
               name="famille"
               type="text"
@@ -192,20 +163,15 @@ const AjouterData = (props) => {
               value={quantite}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-							<Grid item  xs={6} sm={6}>
-								
-              <TextField
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <TextField
               autoCapitalize
-              
               variant="outlined"
-              required
               label="Prix"
               name="famille"
               type="text"
@@ -214,41 +180,31 @@ const AjouterData = (props) => {
               value={prix}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-							<Grid item  xs={6} sm={6}>
-								
-							<TextField
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <TextField
               autoCapitalize
-              
               variant="outlined"
-              required
-              label="Date"
-              name="date"
+              label="Prix"
+              name="famille"
               fullWidth
               onChange={(e) => setDate(e.target.value)}
               value={date}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-							<Grid item  xs={6} sm={6}>
-								
-							<TextField
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <TextField
               autoCapitalize
-              
               variant="outlined"
-              required
               label="Fournisseur"
               name="fournisseur"
               type="text"
@@ -257,19 +213,14 @@ const AjouterData = (props) => {
               value={fournisseur}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
-							</Grid>
-						
-					
-							<Grid item  xs={6} sm={6}>
-								
-              <TextField
-              required 
+          </Grid>
+
+          <Grid item xs={6} sm={6}>
+            <TextField
               variant="outlined"
               autoCapitalize
               label="Stock minimum"
@@ -280,37 +231,31 @@ const AjouterData = (props) => {
               value={stcMin}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
-              // InputLabelProps={{style: {fontSize: 30, color:"black"}}} 
+              // InputLabelProps={{style: {fontSize: 30, color:"black"}}}
             />
-							</Grid>
-						
-						
-						</Grid>
-				
-				</form>
+          </Grid>
+        </Grid>
+      </form>
       {/* </DialogContent> */}
       <DialogActions>
         <Button
-        className={classes.btnAA}
-        //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
+          className={classes.btnAA}
+          //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
           onClick={() => {
             props.handleClose(false);
           }}
-          
           variant="contained"
-         
         >
           Annuler
         </Button>
-        <Button  className={classes.btnAA}
-        //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
-        onClick={handleAjouter}>
-         
+        <Button
+          className={classes.btnAA}
+          //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
+          onClick={handleAjouter}
+        >
           Ajouter Article
         </Button>
       </DialogActions>

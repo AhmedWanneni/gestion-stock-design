@@ -19,8 +19,6 @@ const Magasins = () => {
    
    const columns = ["Identifiant unique","Adresse","Gérant"];
 
- 
-
   return (
     <>
       <div className="flex h-screen overflow-hidden">
