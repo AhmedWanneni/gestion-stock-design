@@ -42,7 +42,7 @@ function SearchModal() {
         aria-controls="search-modal"
       >
         <span className="sr-only">Search</span>
-        <FontAwesomeIcon  icon={faSearch}  style={{width:"32px",height:"32px",color:"black",marginRight:"8px"}} />
+        <FontAwesomeIcon  icon={faSearch}  style={{width:"22px",height:"32px",color:"black",marginRight:"8px"}} />
         {/* <img src={loop_img}/> */}
       </button>
       {/* Modal backdrop */}
