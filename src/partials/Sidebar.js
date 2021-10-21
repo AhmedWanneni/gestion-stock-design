@@ -363,6 +363,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <span className="text-sm font-medium">Settings</span>
                 </div>
               </NavLink>
+             
             </li>
           </ul>
         </div>
