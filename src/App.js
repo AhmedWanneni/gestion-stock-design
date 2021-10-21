@@ -16,6 +16,9 @@ import Magasins from './pages/Magasins';
 import Settings from "./pages/Settings";
 import BonDeLivraison from './pages/BonDeLivraison';
 import DemandeFonction from './pages/DemandeFonction';
+import Login from "./pages/login/view"
+import PrivateRoute from './pages/login/privateRoutes';
+
 function App() {
 
   const location = useLocation();
