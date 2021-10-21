@@ -1,27 +1,21 @@
+import { focusHandling } from 'cruip-js-toolkit';
 import React, { useEffect } from 'react';
 import {
-  Switch,
-  Route,
-  useLocation
+  Route, Switch, useLocation
 } from 'react-router-dom';
-import './css/style.scss';
-
-import { focusHandling } from 'cruip-js-toolkit';
 import './charts/ChartjsConfig';
-
+import './css/style.scss';
+import Articles from './pages/Articles';
+import BonCommande from './pages/BonDeCommande';
+import Commandes from './pages/Commande';
 // Import pages
 import Dashboard from './pages/Dashboard';
-import Magasins from './pages/Magasins';
-import Articles from './pages/Articles';
+import Facture from "./pages/Facture";
 import Fournisseurs from './pages/Fournisseur';
-import Commandes from './pages/Commande';
-import Facture from "./pages/Facture"
-import Settings from "./pages/Settings"
-import Invoice from "./pages/Invoice/Invoice"
-import BonCommande from './pages/bonDeCommande/view';
-import BonLivraison from './pages/BonDeLivraison/view';
-import Login from "./pages/login/view"
-import PrivateRoute from './pages/login/privateRoutes';
+import Magasins from './pages/Magasins';
+import Settings from "./pages/Settings";
+import BonDeLivraison from './pages/BonDeLivraison';
+import DemandeFonction from './pages/DemandeFonction';
 function App() {
 
   const location = useLocation();
@@ -64,7 +58,10 @@ function App() {
           <BonCommande/>
         </Route>
         <Route exact path="/bonLivraison">
-          <BonLivraison/>
+          <BonDeLivraison/>
+        </Route>
+        <Route exact path="/demande-fonction">
+          <DemandeFonction/>
         </Route>
       </Switch>
     </>

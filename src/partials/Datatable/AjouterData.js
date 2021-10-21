@@ -243,7 +243,6 @@ const AjouterData = (props) => {
       <DialogActions>
         <Button
           className={classes.btnAA}
-          //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
           onClick={() => {
             props.handleClose(false);
           }}
@@ -253,7 +252,6 @@ const AjouterData = (props) => {
         </Button>
         <Button
           className={classes.btnAA}
-          //  style={{backgroundColor:"#f6d70e",color:"black",borderRadius:"15px"}}
           onClick={handleAjouter}
         >
           Ajouter Article

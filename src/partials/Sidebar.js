@@ -323,7 +323,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <NavLink
                 exact
-                to="/settings"
+                to="/demande-fonction"
                 className={`block text-gray-200 hover:text-white transition duration-150 ${
                   page === "settings" && "hover:text-gray-200"
                 }`}
@@ -363,7 +363,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <span className="text-sm font-medium">Settings</span>
                 </div>
               </NavLink>
-             
             </li>
           </ul>
         </div>

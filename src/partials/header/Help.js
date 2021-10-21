@@ -39,7 +39,7 @@ function Help() {
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Need help?</span>
-        <img src={notif_img}/>
+        <img className="top-bar-icon" src={notif_img}/>
       </button>
 
       <Transition
