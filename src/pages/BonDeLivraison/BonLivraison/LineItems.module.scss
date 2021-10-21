@@ -2,15 +2,22 @@
 
 .lineItems {
   margin-bottom: $rhythm * 4;
+  
   .addItem {
     padding-top: $rhythm;
+    
     button {
       @extend %flex-center;
-      background: none;
-      padding: $rhythm / 2;
-      border: 1px solid $addColor;
-      color: $addColor;
-      border-radius: $borderRadius;
+      // background: none;
+      // padding: $rhythm / 2;
+      // border: 1px solid $addColor;
+      // color: $addColor;
+      // border-radius: $borderRadius;
+      display: block;
+   padding: 2px 40px;
+   background: #f6d70e;
+   border-radius: 60px;
+   margin-left: 12px;
       float: right;
       .addIcon {
         color: $addColor;
@@ -37,6 +44,7 @@
       text-align: center;
       font-weight: bold;
       background: $boxBgColor;
+      background: #b0b1b5;
     }
     &.editable > div {
       padding: $rhythm / 2;

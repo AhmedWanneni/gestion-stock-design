@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import styles from "./Invoice.module.scss";
-
 import LineItems from "./LineItems";
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
-
+import {Avatar,Button,DialogActions, Grid,Dialog,Typography, DialogTitle,DialogContent,InputAdornment, TextField,Container } from "@material-ui/core";
+import { faImage } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import uuidv4 from "uuid/v4";
 // import logo from "../../img/logo.png";
 
@@ -107,8 +108,18 @@ class Invoice extends Component {
      
           
       <div ref={el => (this.componentRef = el)} className={styles.invoice}>
+      
         <div className={styles.brand}>
-          <img  alt="Logo" className="logo" />
+        <FontAwesomeIcon icon={faImage}
+      // style={{width}}
+>
+  Upload File
+  <input
+    type="file"
+    hidden
+  />
+</FontAwesomeIcon>
+
           {this.state.currentDate}
         </div>
         <div className={styles.addresses}>

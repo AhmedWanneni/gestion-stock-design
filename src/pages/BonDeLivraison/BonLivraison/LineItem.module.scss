@@ -7,6 +7,7 @@
 
   & > div {
     @extend %flex-center;
+    background: #d5d6db;;
     padding: ($rhythm/2);
     border-left: 1px solid $tableBorderColor;
     width: 100%;
@@ -41,6 +42,7 @@ input, input[type=number] {
   border-radius: $borderRadius;
   min-width: $rhythm * 2;
   width: 100%;
+  background: #d5d6db;
 }
 input[type=number] {
   text-align: center;

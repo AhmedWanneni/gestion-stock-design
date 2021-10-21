@@ -18,9 +18,7 @@ const Factures = () => {
     switch (step) {
       case 1:
         return  <> 
-        <div>
         <Article/> 
-        </div>
     </>;
       case 0:
         return <>
@@ -34,9 +32,6 @@ const Factures = () => {
       case 2:
         return <>
        <Data/>
-       
-        
-        <h1></h1>
         </>;
       default:
         return "unknown step";
@@ -96,15 +91,7 @@ const Factures = () => {
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           
-          {/*Datatable*/}
-{/*           
-          <Datatable
-            Ajouter={Ajouter_Factures}
-            Afficher={Afficher_Factures}
-            Modifier={Modifier_Factures}
-            Supprimer={Supprimer_Factures}
-            title={"Liste des Factures"}
-          /> */}
+        
           <Box sx={{ width: '100%' }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {

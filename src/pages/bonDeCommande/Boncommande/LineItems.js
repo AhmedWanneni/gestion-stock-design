@@ -6,7 +6,8 @@ import LineItem from "./LineItem";
 
 import { MdAddCircle as AddIcon } from "react-icons/md";
 import styles from "./LineItems.module.scss";
-
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class LineItems extends Component {
   handleDragEnd = (result) => {
     if (!result.destination) return;
@@ -91,7 +92,7 @@ class LineItems extends Component {
 
           <div className={styles.addItem}>
             <button type="button" onClick={addHandler}>
-              <AddIcon size="1.25em" className={styles.addIcon} /> Add Item
+              <FontAwesomeIcon  icon={faPlus} size="1.25em" className={styles.addIcon} /> Add Item
             </button>
           </div>
         </div>
