@@ -3,6 +3,8 @@ import Header from "../partials/Header";
 import Invoice from "../partials/Invoice/Invoice";
 import Sidebar from "../partials/Sidebar";
 import { Link } from "react-router-dom";
+import { Typography } from "@material-ui/core";
+
 const BonDeCommande = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const columns = ["Identifiant unique", "Date max", "Gérant", "Accepte"];
@@ -17,10 +19,9 @@ const BonDeCommande = () => {
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden white">
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
+          <Typography  variant="h4">Bon de livraison achat: </Typography>
           {/*Bon de Commande*/}
-          <Link to="/liste-bon-commande-achat">Liste bons de Commande achat</Link>
-          <Invoice/>
+          <Invoice listLink="liste-bon-commande-achat" title="Bon de commande achat"/>
         </div>
       </div>
     </>

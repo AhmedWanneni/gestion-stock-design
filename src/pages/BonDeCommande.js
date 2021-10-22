@@ -25,14 +25,10 @@ const Commandes = () => {
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden white">
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            <div className="flex flex-col items-start">
-              <Typography  variant="h2"></Typography>
-            <Button className="grey-btn">
-            <Link to="/liste-bon-commande">Liste bons de commande</Link>
-            </Button>
-            </div>
+              <Typography  variant="h4">Bon de commande vente : </Typography>
+            
           {/*Bon de commande*/}
-          <Invoice/>
+          <Invoice listLink="liste-bon-commande" title="Bon de commande"/>
         </div>
       </div>
     </>

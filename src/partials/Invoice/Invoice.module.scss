@@ -1,12 +1,9 @@
-@import 'Invoice';
+@import "Invoice";
 
 .invoice {
-   max-width: 1100px;
+  max-width: 1100px;
   margin: ($rhythm * 2) auto;
-  // border: 1px solid $tableBorderColor;
   padding: 2 * $rhythm;
-  // border-radius: $borderRadius;
-  // background: $bgColor;
 }
 
 .brand {
@@ -22,8 +19,9 @@
   flex-flow: row wrap;
   justify-content: space-between;
   text-align: left;
- 
-  .from, .to {
+
+  .from,
+  .to {
     padding: $rhythm;
     border-radius: $borderRadius;
     width: 100%;
@@ -74,7 +72,6 @@
       justify-content: flex-start;
       font-weight: bold;
     }
-
   }
 }
 
@@ -91,17 +88,20 @@
 }
 
 button.payNow {
-  // display: block;
-  // padding: ($rhythm) ($rhythm * 2);
-  // background: lightyellow;
-  // border-radius: $borderRadius;
-  // border: 1px solid #444;
-   //border: 1px solid #444;
-   display: block;
-   padding: 6px 40px;
-   background: #f6d70e;
-   border-radius: 60px;
-   margin-left: 12px;
+  display: flex;
+  align-items: center;
+  padding: 6px 40px;
+  background: #f6d70e;
+  border-radius: 60px;
+  margin-left: 12px;
+  > img {
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+  }
+  > svg {
+    fill: #000000 !important;
+    color: #000000 !important;
+  }
 }
 
 .footer {
@@ -112,7 +112,8 @@ button.payNow {
   .comments {
     padding: $rhythm;
     border-radius: $borderRadius;
-    h4, h5 {
+    h4,
+    h5 {
       margin-top: 0;
       margin-bottom: $rhythm / 2;
     }
@@ -124,6 +125,4 @@ button.payNow {
   .closing {
     padding-top: $rhythm;
   }
-
 }
-

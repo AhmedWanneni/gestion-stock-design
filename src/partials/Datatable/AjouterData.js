@@ -64,8 +64,9 @@ const AjouterData = (props) => {
             <TextField
               autoCapitalize
               variant="outlined"
-              label="libell"
-              name="libell"
+              label="libellé"
+              placeholder="Libellé"
+              name=""
               type="text"
               fullWidth
               value={libell}
@@ -83,6 +84,7 @@ const AjouterData = (props) => {
                 autoCapitalize
                 variant="outlined"
                 label="sous famille"
+                placeholder="Sous famille"
                 name="famille"
                 type="text"
                 fullWidth
@@ -101,6 +103,7 @@ const AjouterData = (props) => {
                 variant="outlined"
                 label="famille"
                 name="famille"
+                placeholder="Famille"
                 type="text"
                 fullWidth
                 onChange={(e) => setFamille(e.target.value)}
@@ -120,6 +123,7 @@ const AjouterData = (props) => {
               autoCapitalize
               variant="outlined"
               label="nomenclature"
+              placeholder="Nomenclature"
               name="nomenclature"
               type="text"
               fullWidth
@@ -137,7 +141,8 @@ const AjouterData = (props) => {
             <TextField
               autoCapitalize
               variant="outlined"
-              label="Unité mésure"
+              label="Unité mesure"
+              placeholder="Unité mesure"
               name="uniteMesure"
               type="text"
               fullWidth
@@ -156,6 +161,7 @@ const AjouterData = (props) => {
               autoCapitalize
               variant="outlined"
               label="Quantité Stock"
+              placeholder="Quantité en stock"
               name="famille"
               type="text"
               fullWidth
@@ -168,11 +174,12 @@ const AjouterData = (props) => {
               }}
             />
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               autoCapitalize
               variant="outlined"
               label="Prix"
+              placeholder="Prix"
               name="famille"
               type="text"
               fullWidth
@@ -185,28 +192,14 @@ const AjouterData = (props) => {
               }}
             />
           </Grid>
-          <Grid item xs={6} sm={6}>
-            <TextField
-              autoCapitalize
-              variant="outlined"
-              label="Prix"
-              name="famille"
-              fullWidth
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start"></InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
+
           <Grid item xs={6} sm={6}>
             <TextField
               autoCapitalize
               variant="outlined"
               label="Fournisseur"
               name="fournisseur"
+              placeholder="Fournisseur"
               type="text"
               fullWidth
               onChange={(e) => setFournisseur(e.target.value)}
@@ -224,6 +217,7 @@ const AjouterData = (props) => {
               variant="outlined"
               autoCapitalize
               label="Stock minimum"
+              placeholder="Stock minimum"
               name="stcMin"
               type="text"
               fullWidth
@@ -250,10 +244,7 @@ const AjouterData = (props) => {
         >
           Annuler
         </Button>
-        <Button
-          className={classes.btnAA}
-          onClick={handleAjouter}
-        >
+        <Button className={classes.btnAA} onClick={handleAjouter}>
           Ajouter Article
         </Button>
       </DialogActions>
