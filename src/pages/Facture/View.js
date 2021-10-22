@@ -1,43 +1,46 @@
-import React, {useState} from "react";
-import Datatable from "../../partials/Datatable";
-import Sidebar from "../../partials/Sidebar";
-import { Ajouter_Factures, Afficher_Factures,Modifier_Factures,Supprimer_Factures } from "./Controller";
-
-
+import {
+  Box, Button, Step,
+  StepLabel, Stepper, Typography,
+  Breadcrumbs
+} from "@material-ui/core";
+import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import Article from "../../partials/Datatable/ArticleTable";
+import Fournisseur from "../../partials/Datatable/FournisseurTable";
 import Header from "../../partials/Header";
-import Fournisseur from "../../partials/Datatable/FournisseurTable"
-import Data from "./Facture"
-import Article from "../../partials/Datatable/ArticleTable"
-import { Button, Paper, TextField,Grid,Box,Stepper,Step,StepLabel,Typography} from "@material-ui/core";
-const steps = ['Liste des fournisseur', 'Liste des article', 'Votre Facture'];
+import Sidebar from "../../partials/Sidebar";
+import Data from "./Facture";
+
+const steps = ["Liste des fournisseur", "Liste des article", "Votre Facture"];
 const Factures = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
-  const getStep = (step)=>{
+  const getStep = (step) => {
     switch (step) {
       case 1:
-        return  <> 
-        <Article/> 
-    </>;
+        return (
+          <>
+            <Article />
+          </>
+        );
       case 0:
-        return <>
-        
-       
-        <Fournisseur/>
-       
-        
-
-        </>;
+        return (
+          <>
+            <Fournisseur />
+          </>
+        );
       case 2:
-        return <>
-       <Data/>
-        </>;
+        return (
+          <>
+            <Data />
+          </>
+        );
       default:
         return "unknown step";
     }
-   }
-   const isStepOptional = (step) => {
+  };
+  const isStepOptional = (step) => {
     return step === 1;
   };
 
@@ -50,7 +53,6 @@ const Factures = () => {
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
-      
     }
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -90,69 +92,69 @@ const Factures = () => {
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden white">
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          
-        
-          <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption"></Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      {activeStep === steps.length ? (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <div>
-          {getStep(activeStep)}
-            </div>
-          <Typography sx={{ mt: 2, mb: 1 }}></Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
-            {/* {isStepOptional(activeStep) && (
+          <Breadcrumbs aria-label="breadcrumb" className="breadcrumb">
+              <Link underline="hover" color="inherit" href="/">
+                Ventes
+              </Link>
+              <Typography color="text.primary">Bon de livraison</Typography>
+            </Breadcrumbs>
+          <Box sx={{ width: "100%" }}>
+            <Stepper activeStep={activeStep}>
+              {steps.map((label, index) => {
+                const stepProps = {};
+                const labelProps = {};
+                if (isStepOptional(index)) {
+                  labelProps.optional = (
+                    <Typography variant="caption"></Typography>
+                  );
+                }
+                if (isStepSkipped(index)) {
+                  stepProps.completed = false;
+                }
+                return (
+                  <Step key={label} {...stepProps}>
+                    <StepLabel {...labelProps}>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+            {activeStep === steps.length ? (
+              <React.Fragment>
+                <Typography sx={{ mt: 2, mb: 1 }}>
+                  All steps completed - you&apos;re finished
+                </Typography>
+                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                  <Box sx={{ flex: "1 1 auto" }} />
+                  <Button onClick={handleReset}>Reset</Button>
+                </Box>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <div>{getStep(activeStep)}</div>
+                <Typography sx={{ mt: 2, mb: 1 }}></Typography>
+                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                  <Button
+                    color="inherit"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: 1 }}
+                  >
+                    Back
+                  </Button>
+                  <Box sx={{ flex: "1 1 auto" }} />
+                  {/* {isStepOptional(activeStep) && (
               <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                 Skip
               </Button>
             )} */}
 
-            <Button onClick={
-              
-              handleNext}>
-              {activeStep === steps.length - 1 ? 'Terminé' : 'suivant'}
-            </Button>
+                  <Button onClick={handleNext}>
+                    {activeStep === steps.length - 1 ? "Terminé" : "suivant"}
+                  </Button>
+                </Box>
+              </React.Fragment>
+            )}
           </Box>
-        </React.Fragment>
-      )}
-    </Box>
         </div>
       </div>
     </>

@@ -23,16 +23,9 @@ const BonDeLivraison = () => {
           <div className="flex flex-row items-center m-2 justify-between">
             <Breadcrumbs aria-label="breadcrumb" className="breadcrumb">
               <Link underline="hover" color="inherit" href="/">
-                MUI
+                Ventes
               </Link>
-              <Link
-                underline="hover"
-                color="inherit"
-                href="/getting-started/installation/"
-              >
-                Core
-              </Link>
-              <Typography color="text.primary">Breadcrumbs</Typography>
+              <Typography color="text.primary">Bon de livraison</Typography>
             </Breadcrumbs>
             {/*<Typography variant="h4">Bon de livraison achat</Typography>*/}
           </div>
