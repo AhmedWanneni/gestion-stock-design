@@ -39,7 +39,7 @@ class LineItems extends Component {
           <div className={`${styles.gridTable}`}>
             <div className={`${styles.row} ${styles.header}`}>
               <div>#</div>
-              <div>Item</div>
+              <div>Type</div>
               <div>Description</div>
               <div>Quantité</div>
               <div>Prix</div>

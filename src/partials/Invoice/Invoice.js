@@ -8,6 +8,9 @@ import img_icon from "../../images/imgIcon.svg";
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import table_icon from "../../images/table.svg";
+import print from "../../images/printing.svg";
+import save from "../../images/save.svg";
+//import save from "../../images/save.svg";
 const refe = React.createRef();
 class Invoice extends Component {
   locale = "en-US";
@@ -117,7 +120,7 @@ class Invoice extends Component {
           </div>
           <Button className="list-link-btn">
             <img src={table_icon}/>
-          <Link to={this.props.listLink}>{"Liste de " + this.props.title}</Link>
+          <Link to={"/" + this.props.listLink}>{"Liste de " + this.props.title}</Link>
           </Button>
           
         </div>
@@ -171,7 +174,7 @@ class Invoice extends Component {
           <form>
             <div className={styles.valueTable}>
               <div className={styles.row}>
-                <div className={styles.label}>Tax Rate (%)</div>
+                <div className={styles.label}>TVA (%)</div>
                 <div className={styles.value}>
                   <input
                     name="taxRate"
@@ -188,19 +191,19 @@ class Invoice extends Component {
           <form>
             <div className={styles.valueTable}>
               <div className={styles.row}>
-                <div className={styles.label}>Subtotal</div>
+                <div className={styles.label}>Total HT</div>
                 <div className={`${styles.value} ${styles.currency}`}>
                   {this.formatCurrency(this.calcLineItemsTotal())}
                 </div>
               </div>
               <div className={styles.row}>
-                <div className={styles.label}>Tax ({this.state.taxRate}%)</div>
+                <div className={styles.label}>TVA ({this.state.taxRate}%)</div>
                 <div className={`${styles.value} ${styles.currency}`}>
                   {this.formatCurrency(this.calcTaxTotal())}
                 </div>
               </div>
               <div className={styles.row}>
-                <div className={styles.label}>Total Due</div>
+                <div className={styles.label}>Total TTC</div>
                 <div className={`${styles.value} ${styles.currency}`}>
                   {this.formatCurrency(this.calcGrandTotal())}
                 </div>
@@ -214,7 +217,8 @@ class Invoice extends Component {
             <PrintContextConsumer>
               {({ handlePrint }) => (
                 <button className={styles.payNow} onClick={handlePrint}>
-                  Imprimer
+                  <span>Imprimer</span>
+                  <img src={print} className="w-4"/>
                 </button>
               )}
             </PrintContextConsumer>
@@ -222,7 +226,8 @@ class Invoice extends Component {
           <Pdf targetRef={refe} filename="invoice.pdf">
             {({ toPdf }) => (
               <button className={styles.payNow} onClick={toPdf}>
-                Enregistrer
+                <span>Enregistrer</span>
+                <img src={save} className="w-4"/>
               </button>
             )}
           </Pdf>

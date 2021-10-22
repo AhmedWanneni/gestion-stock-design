@@ -21,10 +21,10 @@ const BonDeLivraison = () => {
 
           {/*Bon de Livraison*/}
           <div className="flex flex-row items-center m-2 justify-between">
-          <Typography variant="h4">Bon de commande</Typography>
+          <Typography variant="h4">Bon de livraison achat</Typography>
           
           </div>
-          <Invoice listeLink="liste-bon-livraison" title="Bon de livraison"/>
+          <Invoice listLink="liste-bon-livraison" title="Bon de livraison"/>
         </div>
       </div>
     </>

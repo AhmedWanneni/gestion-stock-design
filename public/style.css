@@ -116,3 +116,6 @@ input {
 .bg-black{
   background-color: #000 !important;
 }
+::selection {
+  background-color: #f6d70e;
+}
