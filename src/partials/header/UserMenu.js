@@ -4,13 +4,21 @@ import Transition from '../../utils/Transition';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserAvatar from '../../images/user-avatar-32.png';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import Login from "../../pages/login/view"
+import Logout from '../../App'
 function UserMenu() {
 
+  const [token, setToken] = useState();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
-
+const HandleLogout=()=>{
+  if (!token) {
+    return <Login setToken={setToken("")} />;
+  }
+  
+}
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -85,7 +93,7 @@ function UserMenu() {
               <Link
                 className="font-thin text-sm hover:text-indigo-600 flex items-center py-1 px-3"
                 to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => HandleLogout()}
               >
                 Sign Out
               </Link>

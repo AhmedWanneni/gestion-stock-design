@@ -15,8 +15,12 @@ import Settings from "./pages/Settings";
 import BonDeLivraison from "./pages/BonDeLivraison";
 import DemandeFonction from "./pages/DemandeFonction";
 import Login from "./pages/login/view";
+import ListeBonCommande from "./pages/ListeBonCommande"
+import ListeBonCommandeAchat from "./pages/ListeBonCommandeAchat"
+import ListeBonLivraison from "./pages/ListeBonLivraison"
+import BonCommandeAchat from "./pages/BonCommandeAchat"
 function App() {
-  const [token, setToken] = useState();
+   const [token, setToken] = useState();
   const location = useLocation();
 
   useEffect(() => {
@@ -25,16 +29,21 @@ function App() {
     document.querySelector("html").style.scrollBehavior = "";
     focusHandling("outline");
   }, [location.pathname]); // triggered on route change
- 
-  
-  // const userToken = sessionStorage.getItem('token');
-  // setToken(userToken)
+//   const setToken =()=>{
 
+//     localStorage.setItem('token',token)
+//   }
+//   const GetToken=()=>{
+
+//     const userToken = localStorage.getItem('token');
+//     return userToken?.token
+//   }
+//  const token=GetToken()
   if (!token) {
     return <Login setToken={setToken} />;
   }
-else
-console.log(token)
+  else
+
   return (
     <>
       <Switch>

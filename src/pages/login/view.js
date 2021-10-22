@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 
 import {Paper,Button,FormControlLabel, Grid,Checkbox,Typography, DialogTitle,DialogContent,InputAdornment, TextField,Container } from "@material-ui/core";
 import {Loogin} from "./controller"
@@ -10,20 +10,25 @@ const Login = ({ setToken }) => {
   const history = useHistory()
   const [identifier,setIdentifier]=useState("")
   const[password,setPassword]=useState('')
-  const  currentUser = localStorage.getItem("key")
-  console.log(currentUser)
+  const [currentUser, setCurrentUser]=useState()
+useEffect(() => {
+  localStorage.setItem("key", "value")
+}, )
   
 const handleConfirm=()=>{
-  
   Loogin({
     identifier:identifier,
-password:password
-}).then((res) => {
-  setToken(res.jwt);
+    password:password
+  }).then((res) => {
+    setToken(res.jwt)
+    localStorage.setItem("token",'f')
+  console.log(res.jwt)
 }).catch((err) => {
   console.log(err)
 });
+//localStorage.setItem("token",currentUser.jwt)
 }
+
      
      
 
