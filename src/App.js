@@ -14,6 +14,10 @@ import Magasins from "./pages/Magasins";
 import Settings from "./pages/Settings";
 import BonDeLivraison from "./pages/BonDeLivraison";
 import DemandeFonction from "./pages/DemandeFonction";
+import ListeBonCommande from "./pages/ListeBonCommande";
+import ListeBonLivraison from "./pages/ListeBonLivraison";
+import BonCommandeAchat from "./pages/BonCommandeAchat";
+import ListeBonCommandeAchat from "./pages/ListeBonCommandeAchat";
 import Login from "./pages/login/view";
 function App() {
   const [token, setToken] = useState();
@@ -30,10 +34,10 @@ function App() {
   // const userToken = sessionStorage.getItem('token');
   // setToken(userToken)
 
-  if (!token) {
+  /*if (!token) {
     return <Login setToken={setToken} />;
   }
-else
+else*/
 console.log(token)
   return (
     <>

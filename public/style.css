@@ -46,6 +46,9 @@ main {
   align-items: center;
   justify-content: center;
   color: #fff !important;
+  margin-bottom: -1.4rem;
+  border-bottom: solid 1px #8080805e;
+  padding-bottom: .4rem;
 }
 .logo {
   font-weight: 600;
@@ -97,4 +100,19 @@ input {
 
 .font-black{
   color : var(--black) !important;
+}
+.brand{
+  background-color: #b0b1b5 !important;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+.brand .logo{
+  fill : #475569;
+  color : #475569;
+}
+.list-link{
+  background-color: #b0b1b5;
+}
+.bg-black{
+  background-color: #000 !important;
 }

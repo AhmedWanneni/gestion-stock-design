@@ -5,7 +5,7 @@ import DashboardCard03 from "../partials/dashboard/DashboardCard03";
 import DashboardCard04 from "../partials/dashboard/DashboardCard04";
 import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
-
+import { Typography } from '@material-ui/core';
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -22,7 +22,7 @@ function Dashboard() {
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
             {/* <WelcomeBanner /> */}
-
+            <Typography variant="h4" component="h2">Tableau de bord : </Typography>
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
               {/* Left: Avatars <DashboardAvatars />*/}

@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import styles from "./Invoice.module.scss";
 import Pdf from "react-to-pdf";
 import LineItems from "./LineItems";
-import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
+import ReactToPrint, { PrintContextConsumer } from "react-to-print";
 import uuidv4 from "uuid/v4";
-
-
-const refe= React.createRef();
+import img_icon from "../../images/imgIcon.svg";
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+import table_icon from "../../images/table.svg";
+const refe = React.createRef();
 class Invoice extends Component {
   locale = "en-US";
   currency = "USD";
@@ -24,10 +26,7 @@ class Invoice extends Component {
           price: 0.0,
         },
       ],
-      
     };
-    
-    
   }
   componentDidUpdate() {
     console.log(this.state.LineItems);
@@ -106,21 +105,33 @@ class Invoice extends Component {
 
   render = () => {
     return (
-     
+      <div
+        ref={(el) => (this.componentRef = el)}
+        refe={refe}
+        className={styles.invoice}
+      >
+        <div className="flex flex-row justify-between items-center">
+          <div className="brand w-20 p-2 rounded-sm" onClick={() => alert("a")}>
+            <img alt="Logo" className="logo" src={img_icon} />
+            {this.state.currentDate}
+          </div>
+          <Button className="list-link-btn">
+            <img src={table_icon}/>
+          <Link to={this.props.listLink}>{"Liste de " + this.props.title}</Link>
+          </Button>
           
-      <div ref={el => (this.componentRef = el)} refe={refe}className={styles.invoice}>
-        <div className={styles.brand}>
-          <img  alt="Logo" className="logo" />
-          {this.state.currentDate}
         </div>
         <div className={styles.addresses}>
           <div className={styles.from}>
-            <strong>{this.props.companyName}</strong>
+            <strong>Société :</strong> {this.props.companyName}
             <br />
+            <strong>Adresse : </strong>
             {this.props.companyAdress}
             <br />
+            <strong>Code postal : </strong>
             {this.props.companyCode}&nbsp;{this.props.companyVille}
             <br />
+            <strong>Numéro Téléphone : </strong>
             {this.props.companyTel}
           </div>
           <div>
@@ -154,7 +165,7 @@ class Invoice extends Component {
           focusHandler={this.handleFocusSelect}
           deleteHandler={this.handleRemoveLineItem}
           reorderHandler={this.handleReorderLineItems}
-          />
+        />
 
         <div className={styles.totalContainer}>
           <form>
@@ -169,7 +180,7 @@ class Invoice extends Component {
                     value={this.state.taxRate}
                     onChange={this.handleInvoiceChange}
                     onFocus={this.handleFocusSelect}
-                    />
+                  />
                 </div>
               </div>
             </div>
@@ -199,24 +210,24 @@ class Invoice extends Component {
         </div>
 
         <div className={styles.pay}>
-        <ReactToPrint content={() => this.componentRef}>
-          <PrintContextConsumer>
-            {({ handlePrint }) => (
-              <button className={styles.payNow} onClick={handlePrint}>
-              Imprimer
-            </button>
+          <ReactToPrint content={() => this.componentRef}>
+            <PrintContextConsumer>
+              {({ handlePrint }) => (
+                <button className={styles.payNow} onClick={handlePrint}>
+                  Imprimer
+                </button>
+              )}
+            </PrintContextConsumer>
+          </ReactToPrint>
+          <Pdf targetRef={refe} filename="invoice.pdf">
+            {({ toPdf }) => (
+              <button className={styles.payNow} onClick={toPdf}>
+                Enregistrer
+              </button>
             )}
-          </PrintContextConsumer>
-        </ReactToPrint>
-          <Pdf targetRef={refe}  filename="invoice.pdf">
-        {({ toPdf }) => <button className={styles.payNow} onClick={toPdf} >
-            Enregistrer
-          </button>}
-            </Pdf>
-          
+          </Pdf>
         </div>
       </div>
-                  
     );
   };
 }

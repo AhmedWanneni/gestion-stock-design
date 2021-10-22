@@ -37,7 +37,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
 
             <Help />
             {/*  Divider */}
-            <hr className="w-px h-6 bg-gray-200 mx-3" />
+            <hr className="w-px h-6 bg-black mx-3" />
             <UserMenu />
           </div>
         </div>

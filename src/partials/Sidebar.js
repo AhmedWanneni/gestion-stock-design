@@ -11,6 +11,7 @@ import blivraison from "../images/blivraison.svg";
 import demande from "../images/demande.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
+import logo from "../images/logo.svg"
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
   const { pathname } = location;
@@ -84,7 +85,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           </button>
           {/* Logo */}
           <NavLink exact to="/" className="logo-container">
-            <h1 className="logo">Gestion de stock</h1>
+            <img src={logo} className="w-10 mr-3"/>
+            <h1 className="font-semibold">Gestion de stock</h1>
           </NavLink>
         </div>
 
