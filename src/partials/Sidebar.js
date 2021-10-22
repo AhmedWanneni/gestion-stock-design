@@ -283,7 +283,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <NavLink
                 exact
-                to="/bonCommande"
+                to="/bon-commande-achat"
                 className={`block text-gray-200 hover:text-white transition duration-150 ${
                   page === "campaigns" && "hover:text-gray-200"
                 }`}
@@ -301,7 +301,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <NavLink
                 exact
-                to="/bonCommande"
+                to="/facture-achat"
                 className={`block text-gray-200 hover:text-white transition duration-150 ${
                   page === "campaigns" && "hover:text-gray-200"
                 }`}

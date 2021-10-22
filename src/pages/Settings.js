@@ -1,19 +1,10 @@
-import React, { useState } from "react";
 import {
   Avatar,
-  Button,
-  DialogActions,
-  Grid,
-  Dialog,
-  Typography,
-  DialogTitle,
-  DialogContent,
-  InputAdornment,
-  TextField,
-  Container,
+  Button, Grid, Typography
 } from "@material-ui/core";
-import Sidebar from "../partials/Sidebar";
+import React, { useState } from "react";
 import Header from "../partials/Header";
+import Sidebar from "../partials/Sidebar";
 import { useStyles } from "./style";
 const Settings = () => {
   const classes = useStyles();

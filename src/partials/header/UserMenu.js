@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Transition from '../../utils/Transition';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserAvatar from '../../images/user-avatar-32.png';
-
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 function UserMenu() {
 
@@ -68,22 +67,23 @@ function UserMenu() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200">
-            <div className="font-medium text-gray-800">Acme Inc.</div>
-            <div className="text-xs text-gray-500 italic">Administrator</div>
+            <div className="font-medium text-gray-800">Nom Prénom</div>
+            <div className="text-xs text-gray-500 italic">Administrateur</div>
           </div>
           <ul>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
+                className="font-thin text-sm hover:text-indigo-600 flex items-center py-1 px-3"
+                to="/settings"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
+                
                 Settings
               </Link>
             </li>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                className="font-thin text-sm hover:text-indigo-600 flex items-center py-1 px-3"
                 to="/"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >

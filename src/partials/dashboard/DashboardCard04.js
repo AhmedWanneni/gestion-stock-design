@@ -1,23 +1,24 @@
-import React from 'react';
-import BarChart from '../../charts/BarChart01';
+import React from "react";
+import BarChart from "../../charts/BarChart01";
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils';
+import { tailwindConfig } from "../../utils/Utils";
 
 function DashboardCard04() {
-
   const chartData = {
     labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
+      "12-01-2020",
+      "01-01-2021",
+      "02-01-2021",
+      "03-01-2021",
+      "04-01-2021",
+      "05-01-2021",
     ],
     datasets: [
       // Light blue bars
       {
-        label: 'Direct',
-        data: [
-          800, 1600, 900, 1300, 1950, 1700,
-        ],
+        label: "Commande",
+        data: [800, 1600, 900, 1300, 1950, 1700],
         backgroundColor: tailwindConfig().theme.colors.blue[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
         barPercentage: 0.66,
@@ -25,10 +26,8 @@ function DashboardCard04() {
       },
       // Blue bars
       {
-        label: 'Indirect',
-        data: [
-          4900, 2600, 5350, 4800, 5200, 4800,
-        ],
+        label: "Magasins",
+        data: [4900, 2600, 5350, 4800, 5200, 4800],
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
         barPercentage: 0.66,
@@ -38,7 +37,7 @@ function DashboardCard04() {
   };
   // sm:col-span-6
   return (
-    <div className="flex flex-col col-span-full   bg-white shadow-lg rounded-sm border border-gray-200" >
+    <div className="flex flex-col col-span-full   bg-white shadow-lg rounded-sm border border-gray-200">
       <header className="px-5 py-4 border-b border-gray-100">
         <h2 className="font-semibold text-gray-800">Direct VS Indirect</h2>
       </header>

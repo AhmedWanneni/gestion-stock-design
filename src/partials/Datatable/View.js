@@ -1,4 +1,10 @@
-import { Button, Checkbox, Paper, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  Checkbox,
+  Paper,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -9,33 +15,43 @@ import ModifierData from "./ModifierData";
 import Popup from "./Popup";
 import AjouterMagasin from "./AjouterMagasin";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import AjouterFournisseur from "./AjouterFournisseur"
+import AjouterFournisseur from "./AjouterFournisseur";
 import { Ajouter_Fournisseurs } from "../../pages/Controller";
 import { useStyles } from "./style";
-import ModifierFournisseur from "./ModifierFournisseur"
-import ModifierMagasin from "./ModifierMagasin"
-const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subTitle}) => {
+import ModifierFournisseur from "./ModifierFournisseur";
+import ModifierMagasin from "./ModifierMagasin";
+const Datatable = ({
+  eg,
+  title,
+  c,
+  Afficher,
+  Supprimer,
+  Modifier,
+  Ajouter,
+  x,
+  subTitle,
+}) => {
   const [patient, setPatient] = useState([]);
   const [columns, setColumns] = useState([]);
   const [options, setOptions] = useState([]);
   // popup
   const [openPopup, setOpenPopup] = useState(false);
-  const [openFPopup, setOpenFPopup] =  useState(false)
+  const [openFPopup, setOpenFPopup] = useState(false);
   const [openPopupPatient, setOpenPopupPatient] = useState(false);
   const [id, setId] = useState();
   const [openAjouter, setOpenAjouter] = useState(false);
   const [openModifier, setOpenModifier] = useState(false);
   const [errorConnxion, setErrorConnexion] = useState(false);
- const[loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const [supp, setSupp] = useState(false);
   const [add, setAdd] = useState(false);
   const [NomSearch, setNomSearch] = useState("");
   const [searchId, setSearchId] = useState("");
-  const [detail,setDetail]=useState([])
+  const [detail, setDetail] = useState([]);
   localStorage.setItem("sds", "sdffd");
   const handleClickModifierOpen = () => setOpenModifier(true);
   const handleClose = () => {
-    setLoading((prev) => !prev)
+    setLoading((prev) => !prev);
     setOpenAjouter(false);
     setOpenModifier(false);
   };
@@ -44,19 +60,15 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
   const TABLE_STORAGE_NAME = "patientTableSettings";
 
   const DeleteRow = () => {
-
     Supprimer(window.localStorage.getItem("article_id"))
-      .then(
-        setSupp((prev) => !prev)
-)
-      
+      .then(setSupp((prev) => !prev))
+
       .catch((e) => console.error(e));
   };
 
   const handleSearch = (event) => {
     Afficher()
       .then((res) => {
-        
         let k = [];
         Object.values(res).forEach((element) => k.push(Object.values(element)));
         const actionsBtn = (
@@ -81,11 +93,10 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
       })
       .catch((e) => setErrorConnexion(true));
   };
-  
+
   useEffect(() => {
     Afficher()
       .then((res) => {
-        
         let k = [];
         Object.values(res).forEach((element) => k.push(Object.values(element)));
         const actionsBtn = (
@@ -99,10 +110,9 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
         setPatient(k);
         // console.log("thiis",k)
         //setAdd((prev) => !prev)
-        
       })
       .catch((e) => console.error(e));
-  }, [supp, openPopupPatient, openModifier,add]);
+  }, [supp, openPopupPatient, openModifier, add]);
   useEffect(() => {
     Afficher()
       .then((res) => {
@@ -115,14 +125,14 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
           </div>
         );
         k.map((row) => row.push(actionsBtn));
-          
+
         setPatient(k);
-        console.log("thiis",k)
+        console.log("thiis", k);
         let hiddenCols =
           JSON.parse(localStorage.getItem(TABLE_STORAGE_NAME)) || [];
         // ========= Columns ================
         let y = [];
-        
+
         c.map((e, k) =>
           y.push({
             label: (
@@ -130,16 +140,13 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
                 <TextField id={k} placeholder={e} onChange={handleSearch} />
               </>
             ),
-            options:{
+            options: {
               filter: true,
               sort: false,
             },
-          }
-          
-         ),
-         
+          })
         );
-        y.push(actionsBtn)
+        y.push(actionsBtn);
         setColumns(
           y.map((value) => {
             if (hiddenCols.includes(value.name)) {
@@ -159,7 +166,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
       filter: true,
       selectableRows: "none",
       //  selectableRows:Checkbox,
-      
+
       filtertype: TextField,
       searchText: String(searchId),
       setRowProps: () => ({
@@ -173,8 +180,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
         window.localStorage.setItem("article_id", data[0]);
         setId(window.localStorage.getItem("article_id"));
         setDetail(data);
-        console.log("dattt",data);
-        
+        console.log("dattt", data);
       },
       onRowsDelete: (rowsDeleted) =>
         rowsDeleted.data.map((d) =>
@@ -189,10 +195,9 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
             variant="contained"
             color="accent"
             onClick={() => {
-              setOpenPopupPatient(true)
-              setOpenPopup(true)
-              setOpenFPopup(true)
-              
+              setOpenPopupPatient(true);
+              setOpenPopup(true);
+              setOpenFPopup(true);
             }}
           >
             <AddIcon />
@@ -232,12 +237,11 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
         root: { backgroundColor: "#000" },
       },
       MuiPaper: {
-        root:{
-          border:"none"
+        root: {
+          border: "none",
         },
         elevation4: {
           boxShadow: "none !important",
-
         },
       },
 
@@ -248,7 +252,7 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
       MUIDataTableToolbar: {
         root: {
           color: "#707070",
-          marginBottom : "7rem"
+          marginBottom: "7rem",
         },
         icon: {
           color: "#000",
@@ -265,27 +269,31 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
         </Typography>
       </Paper>
       <div>
-       {eg ==="1"? <ModifierData
-          id={id}
-          handleClose={handleClose}
-          openModifier={openModifier}
-          Modifier={Modifier}
-          detail={detail}
-        />
-     :eg ==="3"?<ModifierFournisseur
-          id={id}
-          
-          handleClose={handleClose}
-          openModifier={openModifier}
-          Modifier={Modifier}
-          detail={detail}
-          />:eg ==="2"?<ModifierMagasin
-          id={id}
-          handleClose={handleClose}
-          openModifier={openModifier}
-          Modifier={Modifier}
-          detail={detail}
-          />:null }
+        {eg === "1" ? (
+          <ModifierData
+            id={id}
+            handleClose={handleClose}
+            openModifier={openModifier}
+            Modifier={Modifier}
+            detail={detail}
+          />
+        ) : eg === "3" ? (
+          <ModifierFournisseur
+            id={id}
+            handleClose={handleClose}
+            openModifier={openModifier}
+            Modifier={Modifier}
+            detail={detail}
+          />
+        ) : eg === "2" ? (
+          <ModifierMagasin
+            id={id}
+            handleClose={handleClose}
+            openModifier={openModifier}
+            Modifier={Modifier}
+            detail={detail}
+          />
+        ) : null}
         <MuiThemeProvider theme={theme}>
           <MUIDataTable
             className="flat"
@@ -294,34 +302,37 @@ const Datatable = ({ eg,title, c, Afficher, Supprimer, Modifier, Ajouter,x ,subT
             columns={columns}
             options={options}
             subTitle={subTitle}
-            
           />
         </MuiThemeProvider>
       </div>
-{x==="1" ? <Popup
-        title={`Ajouter ${title}`}
-        openPopup={openPopupPatient}
-        setOpenPopup={setOpenPopupPatient}
-      >
-        <AjouterData handleClose={setOpenPopupPatient} Ajouter={Ajouter} />
-      </Popup>: x==="2"? <AjouterMagasin
-      title={`Ajouter magasin`}
-      openPopup={openPopup}
-      setOpenPopup={setOpenPopup}
-      handleClose={setOpenPopup}
-      Ajouter={Ajouter} 
-      />:x ==="3"? <AjouterFournisseur
-      title={`Ajouter Fournisseur`}
-      openPopup={openPopup}
-      setOpenPopup={setOpenPopup}
-      handleClose={setOpenPopup}
-      Ajouter={Ajouter} 
-      
-      
-      />:null}
-      
+      {x === "1" ? (
+        <Popup
+          title={`Ajouter ${title}`}
+          openPopup={openPopupPatient}
+          setOpenPopup={setOpenPopupPatient}
+        >
+          <AjouterData handleClose={setOpenPopupPatient} Ajouter={Ajouter} />
+        </Popup>
+      ) : x === "2" ? (
+        <AjouterMagasin
+          title={`Ajouter magasin`}
+          openPopup={openPopup}
+          setOpenPopup={setOpenPopup}
+          handleClose={setOpenPopup}
+          Ajouter={Ajouter}
+        />
+      ) : x === "3" ? (
+        <AjouterFournisseur
+          title={`Ajouter Fournisseur`}
+          openPopup={openPopup}
+          setOpenPopup={setOpenPopup}
+          handleClose={setOpenPopup}
+          Ajouter={Ajouter}
+        />
+      ) : null}
+
       {/* <Button>{title}</Button> */}
-    </div>  
+    </div>
   );
 };
 export default Datatable;

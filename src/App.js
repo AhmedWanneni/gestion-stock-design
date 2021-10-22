@@ -54,6 +54,9 @@ console.log(token)
         <Route exact path="/factures">
           <Facture />
         </Route>
+        <Route exact path="/facture-achat">
+          <Facture />
+        </Route>
         <Route exact path="/settings">
           <Settings />
         </Route>
@@ -65,6 +68,18 @@ console.log(token)
         </Route>
         <Route exact path="/demande-fonction">
           <DemandeFonction />
+        </Route>
+        <Route exact path="/liste-bon-livraison">
+          <ListeBonLivraison />
+        </Route>
+        <Route exact path="/liste-bon-commande">
+          <ListeBonCommande />
+        </Route>
+        <Route exact path="/bon-commande-achat">
+          <BonCommandeAchat />
+        </Route>
+        <Route exact path="/liste-bon-commande-achat">
+          <ListeBonCommandeAchat />
         </Route>
       </Switch>
     </>
