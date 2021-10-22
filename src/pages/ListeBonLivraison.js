@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Datatable from "../partials/Datatable";
 import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
-import { Afficher_Magasins, Ajouter_Magasins, Modifier_Magasins, Supprimer_Magasins } from "./Controller";
-
-const Magasins = () => {
+import {
+  Ajouter_BonLivraisons,
+  Afficher_BonLivraisons,
+  Modifier_BonLivraisons,
+  Supprimer_BonLivraisons,
+} from "./Controller";
+const BonDeLivraison = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false);
- 
-   
-   
-   const columns = ["Identifiant unique","Adresse","Gérant"];
+  const columns = ["Identifiant unique", "Date max", "Gérant", "Accepte"];
 
   return (
     <>
@@ -22,26 +22,23 @@ const Magasins = () => {
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden white">
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          
-          {/*Datatable*/}
-          
 
+          {/*Bon de Livraison*/}
+          {/*Datatable*/}
           <Datatable
-            Ajouter={Ajouter_Magasins}
-            Afficher={Afficher_Magasins}
-            Modifier={Modifier_Magasins}
-            Supprimer={Supprimer_Magasins}
-            title={"Liste des Magasins"}
-            x="2"
-            eg="2"
-            c={columns}
-            subTitle={"magasin"}
+            Ajouter={Ajouter_BonLivraisons}
+            Afficher={Afficher_BonLivraisons}
+            Modifier={Modifier_BonLivraisons}
+            Supprimer={Supprimer_BonLivraisons}
+            title={"Liste des bon livraison"}
+            subTitle={"bon livraison"}
+            columns={columns}
           />
-         
+          {/*<Invoice/>*/}
         </div>
       </div>
     </>
   );
 };
 
-export default Magasins;
+export default BonDeLivraison;

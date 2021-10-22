@@ -23,7 +23,6 @@ const Commandes = () => {
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden white">
           {/*  Site header */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
           {/*Datatable*/}
           <Datatable
             Ajouter={Ajouter_Commandes}

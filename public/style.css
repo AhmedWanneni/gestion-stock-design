@@ -93,3 +93,8 @@ input {
   width: 22px;
   height: 22px;
 }
+/*================= ========*/
+
+.font-black{
+  color : var(--black) !important;
+}

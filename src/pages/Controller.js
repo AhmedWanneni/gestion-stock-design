@@ -157,3 +157,89 @@ export const Search_Facture = async (id) => {
   const res = await axios.get(`http://localhost:5000/Factures/${id}`);
   return res.data;
 };
+// ====================== [Afficher BonLivraison] ========================
+export const Afficher_BonLivraisons = async () => {
+  let res = await axios.get(`http://localhost:5000/BonLivraisons`);
+  return res.data;
+};
+
+// ================== [Ajouter BonLivraison ] =============================
+export const Ajouter_BonLivraisons = async (BonLivraison) => {
+  const res = await axios.post(
+    `http://localhost:5000/BonLivraisons`,
+    BonLivraison
+  );
+  return res.data;
+};
+// ==================== [Modifier BonLivraison] ============================
+export const Modifier_BonLivraisons = async (BonLivraison, id) => {
+  const res = await axios.patch(
+    `http://localhost:5000/BonLivraisons/${id}`,
+    BonLivraison
+  );
+  return res.data;
+};
+
+// ===================== [Supprimer BonLivraison] ============================
+export const Supprimer_BonLivraisons = async (id) => {
+  const res = await axios.delete(`http://localhost:5000/BonLivraisons/${id}`);
+  return res.data;
+};
+// ====================== [Afficher BonCommande] ========================
+export const Afficher_BonCommandes = async () => {
+  let res = await axios.get(`http://localhost:5000/BonCommandes`);
+  return res.data;
+};
+
+// ================== [Ajouter BonCommande ] =============================
+export const Ajouter_BonCommandes = async (BonCommande) => {
+  const res = await axios.post(
+    `http://localhost:5000/BonCommandes`,
+    BonCommande
+  );
+  return res.data;
+};
+// ==================== [Modifier BonCommande] ============================
+export const Modifier_BonCommandes = async (BonCommande, id) => {
+  const res = await axios.patch(
+    `http://localhost:5000/BonCommandes/${id}`,
+    BonCommande
+  );
+  return res.data;
+};
+
+// ===================== [Supprimer BonCommande] ============================
+export const Supprimer_BonCommandes = async (id) => {
+  const res = await axios.delete(`http://localhost:5000/BonCommandes/${id}`);
+  return res.data;
+};
+// ====================== [Afficher BonCommande] ========================
+export const Afficher_BonCommandesAchat = async () => {
+  let res = await axios.get(`http://localhost:5000/BonCommandesAchat`);
+  return res.data;
+};
+
+// ================== [Ajouter BonCommande ] =============================
+export const Ajouter_BonCommandesAchat = async (BonCommande) => {
+  const res = await axios.post(
+    `http://localhost:5000/BonCommandesAchat`,
+    BonCommande
+  );
+  return res.data;
+};
+// ==================== [Modifier BonCommande] ============================
+export const Modifier_BonCommandesAchat = async (BonCommande, id) => {
+  const res = await axios.patch(
+    `http://localhost:5000/BonCommandesAchat/${id}`,
+    BonCommande
+  );
+  return res.data;
+};
+
+// ===================== [Supprimer BonCommande] ============================
+export const Supprimer_BonCommandesAchat = async (id) => {
+  const res = await axios.delete(
+    `http://localhost:5000/BonCommandesAchat/${id}`
+  );
+  return res.data;
+};

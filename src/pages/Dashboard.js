@@ -45,14 +45,13 @@ function Dashboard() {
 
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
-              {/* Line chart (Acme Plus) */}
+              {/* Fournisseurs */}
               <DashboardCard01 />
-              {/* Line chart (Acme Advanced) */}
+              {/* Commandes */}
               <DashboardCard02 />
-              {/* Line chart (Acme Professional) */}
+              {/*Magasins*/}
               <DashboardCard03 />
-
-            
+              {/*statistique*/}
               <DashboardCard04 />
               
             </div>

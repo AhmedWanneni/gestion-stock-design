@@ -15,7 +15,6 @@ const Fournisseurs = () => {
   useEffect(() => {
     Afficher_Fournisseurs()
     .then((res) => {
-      console.log("the data",res)
       setFournisseur(res)
     }).catch((err) => {
       console.log(err)
