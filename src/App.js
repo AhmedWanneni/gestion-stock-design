@@ -1,44 +1,44 @@
-import { focusHandling } from 'cruip-js-toolkit';
-import React, { useEffect } from 'react';
-import {
-  Route, Switch, useLocation
-} from 'react-router-dom';
-import './charts/ChartjsConfig';
-import './css/style.scss';
-import Articles from './pages/Articles';
-import BonCommande from './pages/BonDeCommande';
-import Commandes from './pages/Commande';
+import { focusHandling } from "cruip-js-toolkit";
+import React, { useEffect, useState } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
+import "./charts/ChartjsConfig";
+import "./css/style.scss";
+import Articles from "./pages/Articles";
+import BonCommande from "./pages/BonDeCommande";
+import Commandes from "./pages/Commande";
 // Import pages
-import Dashboard from './pages/Dashboard';
+import Dashboard from "./pages/Dashboard";
 import Facture from "./pages/Facture";
-import Fournisseurs from './pages/Fournisseur';
-import Magasins from './pages/Magasins';
+import Fournisseurs from "./pages/Fournisseur";
+import Magasins from "./pages/Magasins";
 import Settings from "./pages/Settings";
-import BonDeLivraison from './pages/BonDeLivraison';
-import DemandeFonction from './pages/DemandeFonction';
-import Login from "./pages/login/view"
-import PrivateRoute from './pages/login/privateRoutes';
-
+import BonDeLivraison from "./pages/BonDeLivraison";
+import DemandeFonction from "./pages/DemandeFonction";
+import Login from "./pages/login/view";
 function App() {
-
+  const [token, setToken] = useState();
   const location = useLocation();
 
   useEffect(() => {
-    document.querySelector('html').style.scrollBehavior = 'auto'
-    window.scroll({ top: 0 })
-    document.querySelector('html').style.scrollBehavior = ''
-    focusHandling('outline');
+    document.querySelector("html").style.scrollBehavior = "auto";
+    window.scroll({ top: 0 });
+    document.querySelector("html").style.scrollBehavior = "";
+    focusHandling("outline");
   }, [location.pathname]); // triggered on route change
+ 
+  
+  // const userToken = sessionStorage.getItem('token');
+  // setToken(userToken)
 
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
+else
+console.log(token)
   return (
     <>
       <Switch>
-      <Route exact path="/login">
-          <Login/>
-        </Route>
-        <PrivateRoute exact path="/">
-          <Dashboard />
-        </PrivateRoute>
+        <Route exact path="/" component={Dashboard} />
         <Route exact path="/magasins">
           <Magasins />
         </Route>
@@ -58,13 +58,13 @@ function App() {
           <Settings />
         </Route>
         <Route exact path="/bonCommande">
-          <BonCommande/>
+          <BonCommande />
         </Route>
         <Route exact path="/bonLivraison">
-          <BonDeLivraison/>
+          <BonDeLivraison />
         </Route>
         <Route exact path="/demande-fonction">
-          <DemandeFonction/>
+          <DemandeFonction />
         </Route>
       </Switch>
     </>

@@ -4,31 +4,25 @@ import {Paper,Button,FormControlLabel, Grid,Checkbox,Typography, DialogTitle,Dia
 import {Loogin} from "./controller"
 import { Link, useHistory } from "react-router-dom"
 import axios from 'axios';
-const Login = () => {
-  const Loogin = async (Info) => {
-    const { data } =  await axios.post('http://localhost:1337/auth/local',Info); 
-    localStorage.setItem("key",data.jwt)
-      console.log(data)
-      
-     return data 
-  };
+import PropTypes from 'prop-types';
+const Login = ({ setToken }) => {
+ 
   const history = useHistory()
   const [identifier,setIdentifier]=useState("")
   const[password,setPassword]=useState('')
   const  currentUser = localStorage.getItem("key")
   console.log(currentUser)
+  
 const handleConfirm=()=>{
-   let Info={
-      identifier:identifier,
+  
+  Loogin({
+    identifier:identifier,
 password:password
-   }
-  Loogin(Info)
-  .then(
-    history.push("/")
-    
-    )
-  .catch((e) => 
-  localStorage.removeItem('key'));
+}).then((res) => {
+  setToken(res.jwt);
+}).catch((err) => {
+  console.log(err)
+});
 }
      
      
@@ -68,4 +62,7 @@ password:password
     </> );
 }
  
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
 export default Login;
