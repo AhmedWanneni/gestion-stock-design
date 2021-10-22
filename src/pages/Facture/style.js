@@ -15,6 +15,16 @@ export const useStyles = makeStyles((theme) => ({
     // padding: "40px",
     // borderRadius: "4px",
     // background: "white",
+ },
+ 
+ textClient:{
+  float:"right",
+margin:"10px"
+ },
+ text:{
+  float:"right",
+  margin:"10px",
+  maxWidth:"20px"
  }
  
 }));

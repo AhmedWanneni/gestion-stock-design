@@ -1,7 +1,12 @@
 import React ,{useState,useRef} from 'react';
 import { useStyles } from "./style";
-import {TableBody,Table, Button, Paper, TableRow, Typography ,TableHead,TableContainer,TableCell} from "@material-ui/core";
-
+import {Container ,TableBody,Table, Button,TablePagination, Paper, TableRow, Typography ,TableHead,TableContainer,TableCell} from 
+"@material-ui/core";
+import {faFacebook} from "@fortawesome/free-solid-svg-icons";
+import { faGoogle } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pdf from "react-to-pdf";
 import ReactToPrint from 'react-to-print';
 const ref = React.createRef();
@@ -33,35 +38,87 @@ const Data = () => {
     return ( <> 
      
 <div   ref={ref} className={classes.content} >
-      
-                  
- <h1>hello</h1>
- 
-      {/* {articleData.map((article)=>(
-        <table  >
-        <tr>
-          <th>LIbell</th>
-          <th>Quantite</th>
-          <th>prix unitaire</th>
-          <th>prix totale</th>
-        </tr>
-        <tr>
-          <td>{article.libell}</td>
-          <td>{article.quantite}</td>
-          <td>{article.prix}</td>
-          <td>{article.prixTotal}</td>
-          
-          
-        </tr>
-        </table>
-
-        
-    
-    ))} */}
+      <h2 style={{ textAlign: "right" }}>Facture</h2>
+      <h2 style={{ textAlign: "right" }}>Date</h2>
+<div className="row" >
 
 
+   <div className="left"style={{ float:" left", width: "50%",padding: "10px",marginRight:"240px",marginLeft:"20px",marginBottom:"20px"}}> 
+<h2 >Client(e)...............</h2>
+<h2 >Adresse...............</h2>
+<h2 >Tel..................</h2>
+</div>  
+<div className="right" style={{ }}>
+<h2  >Societe...............</h2>
+<h2 >Adresse.............</h2>
+<h2 >Tel...............</h2>
+
+</div>
+</div>
+ <Container maxWidth="md">
+
+
+
+  
+  
+      <Paper >
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell>discription</TableCell>
+                <TableCell align="right">
+                  Quantite
+                </TableCell>
+                <TableCell align="right">
+                  prix
+                </TableCell>
+                <TableCell align="right">
+                  prix Total
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {articleData
+                
+                .map((item) => {
+                  return (
+                    <TableRow key={item.name}>
+                      <TableCell>{item.libell}</TableCell>
+                      <TableCell align="right">{item.quantite} </TableCell>
+                      <TableCell align="right">
+                        {" "}
+                        {(item.prix)}
+                      </TableCell>
+                      <TableCell align="right">
+                        {(item.prixTotal)}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
              
-     
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+      </Paper>
+    </Container>
+
+            
+   <div className={classes.footer}></div>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+
+   <br/>
+   <hr/>
+      <p>Mobi sm</p>
+      <p style={{ textAlign: "center"}}>contact@mobism.tn</p>
+      <p>Rue </p>
+      <p>(216)</p>
     
 </div>
       

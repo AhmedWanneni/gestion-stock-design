@@ -3,6 +3,7 @@ import Header from "../partials/Header";
 import Invoice from "../partials/Invoice/Invoice";
 import Sidebar from "../partials/Sidebar";
 import { Link } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 const BonDeLivraison = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const columns = ["Identifiant unique", "Date max", "Gérant", "Accepte"];
@@ -19,8 +20,11 @@ const BonDeLivraison = () => {
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
           {/*Bon de Livraison*/}
-          <Link to="/liste-bon-livraison">Liste bons de livraison</Link>
-          <Invoice/>
+          <div className="flex flex-row items-center m-2 justify-between">
+          <Typography variant="h4">Bon de commande</Typography>
+          
+          </div>
+          <Invoice listeLink="liste-bon-livraison" title="Bon de livraison"/>
         </div>
       </div>
     </>
