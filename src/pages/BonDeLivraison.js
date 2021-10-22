@@ -3,11 +3,11 @@ import Header from "../partials/Header";
 import Invoice from "../partials/Invoice/Invoice";
 import Sidebar from "../partials/Sidebar";
 import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
+import { Typography,Breadcrumbs } from "@material-ui/core";
 const BonDeLivraison = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const columns = ["Identifiant unique", "Date max", "Gérant", "Accepte"];
-  
+
   return (
     <>
       <div className="flex h-screen overflow-hidden">
@@ -21,10 +21,22 @@ const BonDeLivraison = () => {
 
           {/*Bon de Livraison*/}
           <div className="flex flex-row items-center m-2 justify-between">
-          <Typography variant="h4">Bon de livraison achat</Typography>
-          
+            <Breadcrumbs aria-label="breadcrumb" className="breadcrumb">
+              <Link underline="hover" color="inherit" href="/">
+                MUI
+              </Link>
+              <Link
+                underline="hover"
+                color="inherit"
+                href="/getting-started/installation/"
+              >
+                Core
+              </Link>
+              <Typography color="text.primary">Breadcrumbs</Typography>
+            </Breadcrumbs>
+            {/*<Typography variant="h4">Bon de livraison achat</Typography>*/}
           </div>
-          <Invoice listLink="liste-bon-livraison" title="Bon de livraison"/>
+          <Invoice listLink="liste-bon-livraison" title="Bon de livraison" />
         </div>
       </div>
     </>
