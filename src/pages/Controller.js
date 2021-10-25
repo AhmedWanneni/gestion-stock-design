@@ -1,5 +1,4 @@
 import axios from "axios";
-import env from "react-dotenv";
 
 export const Afficher_Articles = async () => {
   let res = await axios.get(`http://localhost:5000/Articles`);

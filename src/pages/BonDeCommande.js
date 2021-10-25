@@ -1,16 +1,9 @@
+import { Breadcrumbs, Typography } from '@material-ui/core';
 import React, { useState } from "react";
-import Datatable from "../partials/Datatable";
-import Sidebar from "../partials/Sidebar";
-import {
-  Ajouter_Commandes,
-  Afficher_Commandes,
-  Modifier_Commandes,
-  Supprimer_Commandes,
-} from "./Controller";
+import { Link } from "react-router-dom";
 import Header from "../partials/Header";
 import Invoice from "../partials/Invoice/Invoice";
-import {Link} from "react-router-dom";
-import { Button,Typography,Breadcrumbs } from '@material-ui/core';
+import Sidebar from "../partials/Sidebar";
 const Commandes = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const columns = ["Identifiant unique", "Date max", "Gérant", "Accepte"];

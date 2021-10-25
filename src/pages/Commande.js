@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Datatable from "../partials/Datatable";
+import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
 import {
-  Ajouter_Commandes,
-  Afficher_Commandes,
-  Modifier_Commandes,
-  Supprimer_Commandes,
+  Afficher_Commandes, Ajouter_Commandes, Modifier_Commandes,
+  Supprimer_Commandes
 } from "./Controller";
-import Header from "../partials/Header";
 
 const Commandes = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

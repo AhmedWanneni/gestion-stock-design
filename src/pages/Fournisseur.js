@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Datatable from "../partials/Datatable";
+import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
 import {
-  Ajouter_Fournisseurs,
-  Afficher_Fournisseurs,
-  Modifier_Fournisseurs,
-  Supprimer_Fournisseurs,
+  Afficher_Fournisseurs, Ajouter_Fournisseurs, Modifier_Fournisseurs,
+  Supprimer_Fournisseurs
 } from "./Controller";
-import Header from "../partials/Header";
 
 const Fournisseurs = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

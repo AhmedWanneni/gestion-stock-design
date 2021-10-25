@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React, { useState } from "react";
 import DashboardCard01 from "../partials/dashboard/DashboardCard01";
 import DashboardCard02 from "../partials/dashboard/DashboardCard02";
@@ -5,7 +6,6 @@ import DashboardCard03 from "../partials/dashboard/DashboardCard03";
 import DashboardCard04 from "../partials/dashboard/DashboardCard04";
 import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
-import { Typography } from '@material-ui/core';
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
